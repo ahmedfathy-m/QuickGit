@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (5.6.1)
+  - IQKeyboardManagerSwift (6.5.10)
+  - JGProgressHUD (2.2)
+  - Kingfisher (7.3.2)
+  - lottie-ios (3.4.1)
+  - SkeletonView (1.30.0)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - JGProgressHUD
+  - Kingfisher
+  - lottie-ios
+  - SkeletonView
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - JGProgressHUD
+    - Kingfisher
+    - lottie-ios
+    - SkeletonView
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  lottie-ios: 016449b5d8be0c3dcbcfa0a9988469999cd04c5d
+  SkeletonView: 939a2cc7d1ea697cdb41d4c2dea6257d3dc74987
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 6e5c1c65791d4a0ccbe61954781b043868fe0a50
+
+COCOAPODS: 1.11.3
