@@ -8,14 +8,18 @@
 import UIKit
 
 class CompactRepoCell: UITableViewCell {
-    
-    //MARK: - Cell Data Configuration
-    
-    var repoName: String? {
+    //MARK: - Data Model
+    var repoModel: Repository? {
         didSet {
-            titleLabel.text = repoName
+            if let repoModel = repoModel {
+                titleLabel.text = repoModel.repoName
+                aboutLabel.text = repoModel.repoDescription
+                starCount.text = String(repoModel.starsCount)
+                usedLang.text = repoModel.devLang
+            }
         }
     }
+    
     //MARK: - UI Elements
     
     private let titleLabel = UILabel()
@@ -33,6 +37,10 @@ class CompactRepoCell: UITableViewCell {
     
     //MARK: - View Setup Functions
     
+    var computedHeight: CGFloat {
+        return (titleLabel.frame.height + aboutLabel.frame.height + starCount.frame.height + 40)
+    }
+    
     func setupView() {
         //titleLabel Setup
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -40,15 +48,15 @@ class CompactRepoCell: UITableViewCell {
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        titleLabel.text = "Repo name"
         
         //AboutLabel Setup
         aboutLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(aboutLabel)
         aboutLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         aboutLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        aboutLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
         aboutLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        aboutLabel.text = "Repo Description"
+        aboutLabel.numberOfLines = 0
         
         //StarSymbol Setup
         starSymbol.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +74,6 @@ class CompactRepoCell: UITableViewCell {
         starCount.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 10).isActive = true
         starCount.leadingAnchor.constraint(equalTo: starSymbol.trailingAnchor, constant: 10).isActive = true
         starCount.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        starCount.text = "453536"
         
         //LangIcon Setup
         langCircle.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +91,7 @@ class CompactRepoCell: UITableViewCell {
         usedLang.leadingAnchor.constraint(equalTo: langCircle.trailingAnchor, constant: 10).isActive = true
         usedLang.centerYAnchor.constraint(equalTo: starCount.centerYAnchor).isActive = true
         usedLang.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        usedLang.text = "Swift"
+//        usedLang.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10).isActive = true
         
         contentView.sizeToFit()
     }

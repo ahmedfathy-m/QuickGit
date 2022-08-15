@@ -6,8 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CommitCell: UITableViewCell {
+    
+    //MARK: - Data Model
+    var commitEntry: CommitEntry? {
+        didSet {
+            if let commitEntry = commitEntry {
+                committerName.text = commitEntry.committer?.committer
+                commit.text = commitEntry.commit.commitMessage
+                if let committer = commitEntry.committer {
+                    committerImage.kf.setImage(with: URL(string: committer.committerAvatarURL))
+                }
+            }
+        }
+    }
     
     //MARK: - UI Initialization
     let committerName = UILabel()
@@ -35,7 +49,6 @@ class CommitCell: UITableViewCell {
         committerImage.widthAnchor.constraint(equalToConstant: 30).isActive = true
         committerImage.layer.cornerRadius = 15
         committerImage.clipsToBounds = true
-        committerImage.image = UIImage(named: "me")
         
         //CommitterName Label
         committerName.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +63,8 @@ class CommitCell: UITableViewCell {
         commit.topAnchor.constraint(equalTo: committerName.bottomAnchor, constant: 10).isActive = true
         commit.heightAnchor.constraint(equalToConstant: 20).isActive = true
         commit.leadingAnchor.constraint(equalTo: committerName.leadingAnchor).isActive = true
+        commit.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        commit.numberOfLines = 0
         
     }
 }

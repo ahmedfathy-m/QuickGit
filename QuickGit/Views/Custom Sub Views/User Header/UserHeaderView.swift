@@ -6,8 +6,27 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserHeaderView: UITableViewHeaderFooterView {
+    
+    //MARK: - Data Model
+    var profileModel: ProfileModel? {
+        didSet {
+            if let profileModel = profileModel {
+                displayName.text = profileModel.fullName
+                username.text = profileModel.userName
+                userBio.text = profileModel.bio
+                if profileModel.location == nil {
+                    locationIcon.isHidden = true
+                    cityLabel.isHidden = true
+                }
+                cityLabel.text = profileModel.location
+                metrics.text = "Followers: \(profileModel.followers) · Following: \(profileModel.following)"
+                avatar.kf.setImage(with: URL(string: profileModel.avatarURL))
+            }
+        }
+    }
     
     //MARK: - View Outlets
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -17,6 +36,7 @@ class UserHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var userBio: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var metrics: UILabel!
+    @IBOutlet weak var locationIcon: UIImageView!
     var buttonAction: (() -> ())?
     
     //MARK: - Life Cycle

@@ -12,7 +12,8 @@ final class MainCoordinator: Coordinator {
     private let tabController = UITabBarController()
     override func start() {
         initTabView()
-        navigationController.pushViewController(tabController, animated: true)
+        navigationController.setViewControllers([tabController], animated: true)
+//        navigationController.pushViewController(tabController, animated: true)
     }
     
     deinit {
@@ -44,7 +45,7 @@ final class MainCoordinator: Coordinator {
     }
     
     func goToUserSearch() {
-        let userVC = ReusableMultiCellView(contentType: .users)
+        let userVC = ReusableMultiCellView(contentType: .users(.popularUsers))
         userVC.coordinator = self
         userVC.view.backgroundColor = .white
         userVC.title = "Users"
@@ -52,15 +53,15 @@ final class MainCoordinator: Coordinator {
     }
     
     func goToReposSearch() {
-        let reposVC = ReusableMultiCellView(contentType: .repos)
+        let reposVC = ReusableMultiCellView(contentType: .repos(.popularRepos))
         reposVC.coordinator = self
         reposVC.view.backgroundColor = .white
         reposVC.title = "Repositories"
         navigationController.pushViewController(reposVC, animated: true)
     }
     
-    func goToCommitsView() {
-        let commitsVC = ReusableMultiCellView(contentType: .commits)
+    func goToCommitsView(_ targetRepo: String) {
+        let commitsVC = ReusableMultiCellView(contentType: .commits(targetRepo))
         commitsVC.coordinator = self
         commitsVC.view.backgroundColor = .white
         commitsVC.title = "Commits"
@@ -80,6 +81,22 @@ final class MainCoordinator: Coordinator {
         settingsVC.coordinator = self
         settingsVC.title = "Settings"
         navigationController.pushViewController(settingsVC, animated: true)
+    }
+    
+    func goToUserRepoistories(_ login: String) {
+        let reposVC = ReusableMultiCellView(contentType: .repos(.someUser(login)))
+        reposVC.view.backgroundColor = .white
+        reposVC.coordinator = self
+        reposVC.title = "Repositories"
+        navigationController.pushViewController(reposVC, animated: true)
+    }
+    
+    func goToStarredRepositories(_ login: String) {
+        let reposVC = ReusableMultiCellView(contentType: .repos(.starredRepos(login)))
+        reposVC.view.backgroundColor = .white
+        reposVC.coordinator = self
+        reposVC.title = "Repositories"
+        navigationController.pushViewController(reposVC, animated: true)
     }
     
 }

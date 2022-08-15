@@ -15,6 +15,12 @@ class ReusableMultiCellView: UIViewController {
     init(contentType: ContentType) {
         self.contentType = contentType
         super.init(nibName: nil, bundle: nil)
+        switch contentType {
+        case .users(let pageType): viewModel = UserSearchViewModel(type: pageType)
+        case .repos(let pageType): viewModel = ReposViewModel(type: pageType)
+        case .commits: viewModel = CommitsViewModel(repo: contentType.targetRepo)
+        case .bookmarks: break
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -28,11 +34,13 @@ class ReusableMultiCellView: UIViewController {
         myTableView.translatesAutoresizingMaskIntoConstraints = false
         myTableView.separatorStyle = .singleLine
         myTableView.separatorColor = .lightGray
+        myTableView.estimatedRowHeight = 100
+        myTableView.rowHeight = UITableView.automaticDimension
         return myTableView
     }()
     lazy var handler = ReusableTableViewTableHandler(contentType: contentType)
     let searchController = UISearchController(searchResultsController: RecentSearchViewController())
-    let viewModel = UserSearchViewModel()
+    var viewModel: ViewModelProtocol?
     
     
     //MARK: - Life Cycle
@@ -48,11 +56,11 @@ class ReusableMultiCellView: UIViewController {
         case .commits: tableView.register(CommitCell.self, forCellReuseIdentifier: "commitCell")
         }
         configureSearchController()
-        viewModel.delegate = self
+        viewModel?.delegate = self
         
         Task {
             do {
-                try await viewModel.initializeViewModel()
+                try await viewModel?.start()
             } catch {
                 print(error)
             }
@@ -81,20 +89,37 @@ class ReusableMultiCellView: UIViewController {
         searchController.searchBar.searchTextField.backgroundColor = .lightGray.withAlphaComponent(0.4)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-    }
-    
-    func didUpdateDataModel() {
-        DispatchQueue.main.async {
-            print("Got em")
-            self.tableView.reloadData()
-        }
+        
+        searchController.showsSearchResultsController = true
     }
 }
 
 extension ReusableMultiCellView: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if searchController.searchBar.text?.count ?? 0 > 0 {
+            searchController.showsSearchResultsController = false
+            switch contentType {
+                case .users:
+                let viewModel = viewModel as! UserSearchViewModel
+                Task {
+                    try await viewModel.search(query: searchController.searchBar.text!)
+                }
+                case .repos(_): break
+                case .commits(_): break
+                case .bookmarks: break
+                }
+        } else {
+            searchController.showsSearchResultsController = true
+            switch contentType {
+                case .users:
+                let viewModel = viewModel as! UserSearchViewModel
+                viewModel.restoreDataModel()
+                case .repos(_): break
+                case .commits(_): break
+                case .bookmarks: break
+                }
+        }
     }
 }
 
@@ -105,11 +130,20 @@ extension ReusableMultiCellView {
         coordinator?.goToReposSearch()
     }
     
-    func goToUserCommits() {
-        coordinator?.goToCommitsView()
+    func goToUserCommits(_ targetRepo: String) {
+        coordinator?.goToCommitsView(targetRepo)
     }
     
     func goToUser(with name: String?) {
         coordinator?.goToUser(with: name)
+    }
+}
+
+
+extension ReusableMultiCellView: ViewModelDelegate {
+    func didUpdateDataModel() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

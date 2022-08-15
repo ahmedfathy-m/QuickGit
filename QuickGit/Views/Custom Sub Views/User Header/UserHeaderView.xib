@@ -39,8 +39,8 @@
                         </label>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPG-g6-eSa">
-                    <rect key="frame" x="30" y="120" width="326" height="73"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPG-g6-eSa">
+                    <rect key="frame" x="30" y="115" width="368" height="68"/>
                     <string key="text">Tech and sports enthusiast #Clutchmeister
 </string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -48,27 +48,27 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mansoura" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LS0-ZT-kbk">
-                    <rect key="frame" x="52" y="211" width="68" height="18"/>
+                    <rect key="frame" x="52" y="201" width="68" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HfB-Ql-cvz">
-                    <rect key="frame" x="30" y="212.5" width="17" height="15.5"/>
+                    <rect key="frame" x="30" y="202.5" width="17" height="15.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="17" id="qSn-Eo-JBI"/>
                         <constraint firstAttribute="height" constant="17" id="rbC-bA-WPo"/>
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rme-7R-RBv">
-                    <rect key="frame" x="30" y="240" width="19" height="15"/>
+                    <rect key="frame" x="30" y="230" width="19" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17.5" id="Jwv-nv-O8S"/>
                         <constraint firstAttribute="width" constant="19" id="pGw-db-717"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers: 555 | Following: 555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7F-s2-6jp">
-                    <rect key="frame" x="52" y="238" width="212" height="18"/>
+                    <rect key="frame" x="52" y="228" width="212" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -104,10 +104,11 @@
                 <constraint firstItem="m24-F1-NSn" firstAttribute="centerY" secondItem="ORj-iB-KCE" secondAttribute="centerY" id="WOL-Sh-g7I"/>
                 <constraint firstItem="ORj-iB-KCE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="XHo-U4-s18"/>
                 <constraint firstItem="GPG-g6-eSa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="ayz-VT-XN5"/>
-                <constraint firstItem="GPG-g6-eSa" firstAttribute="top" secondItem="ORj-iB-KCE" secondAttribute="bottom" constant="20" id="djM-6J-QLf"/>
+                <constraint firstItem="GPG-g6-eSa" firstAttribute="top" secondItem="ORj-iB-KCE" secondAttribute="bottom" constant="15" id="djM-6J-QLf"/>
                 <constraint firstItem="m24-F1-NSn" firstAttribute="leading" secondItem="ORj-iB-KCE" secondAttribute="trailing" constant="10" id="kwk-GB-o1U"/>
                 <constraint firstItem="HfB-Ql-cvz" firstAttribute="leading" secondItem="GPG-g6-eSa" secondAttribute="leading" id="rQE-bF-dVG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="u7F-s2-6jp" secondAttribute="bottom" constant="5" id="vgc-fj-rbr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="u7F-s2-6jp" secondAttribute="bottom" constant="15" id="vgc-fj-rbr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GPG-g6-eSa" secondAttribute="trailing" constant="30" id="yqx-Y8-WaV"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -117,6 +118,7 @@
                 <outlet property="bookmarkButton" destination="due-cL-A7w" id="UVX-gR-Xmf"/>
                 <outlet property="cityLabel" destination="LS0-ZT-kbk" id="8V8-bE-pcQ"/>
                 <outlet property="displayName" destination="dzP-fg-rDj" id="wLZ-9z-3eJ"/>
+                <outlet property="locationIcon" destination="HfB-Ql-cvz" id="3df-M4-hor"/>
                 <outlet property="metrics" destination="u7F-s2-6jp" id="QSk-if-jc3"/>
                 <outlet property="userBio" destination="GPG-g6-eSa" id="O16-My-tYE"/>
                 <outlet property="username" destination="FFS-fI-tiI" id="q1U-2d-dnE"/>

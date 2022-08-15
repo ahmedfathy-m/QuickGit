@@ -24,8 +24,14 @@ extension ProfileTableHandler: UITableViewDelegate {
         let parentVC = tableView.parentViewController as! ProfileViewController
         let selectedOption = ProfilePageOptions(rawValue: indexPath.row)
         switch selectedOption {
-        case .repos: parentVC.goToUsersRepos()
-        case .starred: parentVC.goToUsersRepos()
+        case .repos:
+            if let profileModel = parentVC.viewModel.dataModel {
+                parentVC.goToUsersRepos(login: profileModel.userName)
+            }
+        case .starred:
+            if let profileModel = parentVC.viewModel.dataModel {
+            parentVC.goToStarredReposBy(login: profileModel.userName)
+        }
         case .organization: break
         case .none: break
         }
@@ -34,8 +40,8 @@ extension ProfileTableHandler: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: UserHeaderView.identifier) as! UserHeaderView
-        header.avatar.image = UIImage(named: "me")
-        header.displayName.text = "Ahmed Fathy"
+        let profileModel = (tableView.parentViewController as! ProfileViewController).viewModel.dataModel
+        header.profileModel = profileModel
         header.bookmarkButton.isHidden = true
         header.buttonAction = {
             print("Really")

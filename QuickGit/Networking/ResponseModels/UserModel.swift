@@ -36,8 +36,8 @@ struct ProfileModel: Decodable {
     let userName: String
     let avatarURL: String
     let fullName: String
-    let location: String
-    let bio: String
+    let location: String?
+    let bio: String?
     let followers: Int
     let following: Int
     

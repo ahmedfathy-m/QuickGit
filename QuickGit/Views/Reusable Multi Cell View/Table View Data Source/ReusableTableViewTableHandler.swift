@@ -19,27 +19,30 @@ class ReusableTableViewTableHandler: NSObject, UITableViewDataSource, UITableVie
         let parentVC = tableView.parentViewController as! ReusableMultiCellView
         switch contentType {
         case .users:
-            return parentVC.viewModel.itemCount
+            return parentVC.viewModel?.itemCount ?? 0
         case .repos:
-            return 6
+            return parentVC.viewModel?.itemCount ?? 0
         case .bookmarks:
             return 7
         case .commits:
-            return 8
+            return parentVC.viewModel?.itemCount ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let parentVC = (tableView.parentViewController as! ReusableMultiCellView)
         switch contentType {
         case .users:
             let cell = tableView.dequeueReusableCell(withIdentifier: "compactUserCell", for: indexPath) as! CompactUserCell
-            let userModel = (tableView.parentViewController as! ReusableMultiCellView).viewModel.dataModel?.items[indexPath.row]
+            let userModel = (parentVC.viewModel as! UserSearchViewModel).dataModel?.items[indexPath.row]
             cell.cellModel = userModel
             cell.accessoryType = .disclosureIndicator
             cell.backgroundColor = .clear
             return cell
         case .repos:
             let cell = tableView.dequeueReusableCell(withIdentifier: "compactRepoCell", for: indexPath) as! CompactRepoCell
+            let repoModel = (parentVC.viewModel as! ReposViewModel).dataModel?[indexPath.row]
+            cell.repoModel = repoModel
             cell.accessoryType = .disclosureIndicator
             cell.backgroundColor = .clear
             return cell
@@ -61,9 +64,8 @@ class ReusableTableViewTableHandler: NSObject, UITableViewDataSource, UITableVie
             }
         case .commits:
             let cell = tableView.dequeueReusableCell(withIdentifier: "commitCell", for: indexPath) as! CommitCell
-            cell.committerName.text = "Ahmed Fathy"
-            cell.commit.text = "Updating Variables"
-            cell.committerImage.image = UIImage(named: "me")
+            let commitModel = (parentVC.viewModel as! CommitsViewModel).dataModel?.items[indexPath.row]
+            cell.commitEntry = commitModel
             return cell
         }
     }
@@ -90,19 +92,26 @@ class ReusableTableViewTableHandler: NSObject, UITableViewDataSource, UITableVie
         let parentVC = tableView.parentViewController as! ReusableMultiCellView
         switch contentType {
         case .users:
-            let userModel = (tableView.parentViewController as! ReusableMultiCellView).viewModel.dataModel?.items[indexPath.row]
+            let userModel = (parentVC.viewModel as! UserSearchViewModel).dataModel?.items[indexPath.row]
             parentVC.goToUser(with: userModel?.userName)
-        case .repos: parentVC.goToUserCommits()
+        case .repos:
+            if let repoModel = (parentVC.viewModel as! ReposViewModel).dataModel?[indexPath.row] {
+                parentVC.goToUserCommits(repoModel.repoName)
+            }
         case .bookmarks:
             let section = CellType(rawValue: indexPath.section)
             switch section {
-            case .repo: parentVC.goToUserCommits()
+            case .repo: break
             case .user:
-                let userModel = (tableView.parentViewController as! ReusableMultiCellView).viewModel.dataModel?.items[indexPath.row]
-                parentVC.goToUser(with: userModel?.userName)
+                if let userModel = (parentVC.viewModel as? UserSearchViewModel)?.dataModel?.items[indexPath.row] {
+                    parentVC.goToUser(with: userModel.userName)
+                }
             case .none: break
             }
-        case .commits: print("No more navigation")
+        case .commits:
+            if let commitModel = (parentVC.viewModel as! CommitsViewModel).dataModel?.items[indexPath.row] {
+                UIApplication.shared.open(URL(string: commitModel.commitURL)!)
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

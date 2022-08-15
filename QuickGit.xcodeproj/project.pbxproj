@@ -26,7 +26,7 @@
 		7472D26C28A45F5D00912C25 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472D26B28A45F5D00912C25 /* AppCoordinator.swift */; };
 		7472D26E28A45F6700912C25 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472D26D28A45F6700912C25 /* MainCoordinator.swift */; };
 		7472D27028A45F6F00912C25 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472D26F28A45F6F00912C25 /* AuthCoordinator.swift */; };
-		74B3505828A6CF2F00C5234C /* GithubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505728A6CF2F00C5234C /* GithubHandler.swift */; };
+		74B3505828A6CF2F00C5234C /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505728A6CF2F00C5234C /* NetworkHandler.swift */; };
 		74B3505C28A72DC000C5234C /* CompactRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505B28A72DC000C5234C /* CompactRepoCell.swift */; };
 		74B3505E28A805D800C5234C /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505D28A805D800C5234C /* ContentType.swift */; };
 		74B3506028A811CD00C5234C /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505F28A811CD00C5234C /* CommitCell.swift */; };
@@ -46,6 +46,16 @@
 		74B3508628A95DD400C5234C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508528A95DD400C5234C /* UserModel.swift */; };
 		74B3508928A9619B00C5234C /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508828A9619B00C5234C /* UserSearchViewModel.swift */; };
 		74B3508B28A96B2C00C5234C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */; };
+		74B3508D28A9858000C5234C /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508C28A9858000C5234C /* ReposViewModel.swift */; };
+		74B3508F28A9862600C5234C /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508E28A9862600C5234C /* RepositoryModel.swift */; };
+		74B3509128A988ED00C5234C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509028A988ED00C5234C /* ViewModelProtocol.swift */; };
+		74B3509328A9A9CB00C5234C /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */; };
+		74B3509528A9A9FA00C5234C /* CommitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509428A9A9FA00C5234C /* CommitModel.swift */; };
+		74FEEFE628AACFC200C598BB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFE528AACFC200C598BB /* NetworkInterceptor.swift */; };
+		74FEEFE828AAD05700C598BB /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFE728AAD05700C598BB /* AuthenticationModule.swift */; };
+		74FEEFEA28AAD16A00C598BB /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFE928AAD16A00C598BB /* APIKeys.swift */; };
+		74FEEFED28AADBD000C598BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FEEFEC28AADBD000C598BB /* Login.storyboard */; };
+		74FEEFEF28AADBE700C598BB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFEE28AADBE700C598BB /* LoginView.swift */; };
 		CF7162D0457168F527B5253B /* Pods_QuickGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9229EE17E3D5ADBE8686DBD /* Pods_QuickGit.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +81,7 @@
 		7472D26B28A45F5D00912C25 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7472D26D28A45F6700912C25 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		7472D26F28A45F6F00912C25 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		74B3505728A6CF2F00C5234C /* GithubHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubHandler.swift; sourceTree = "<group>"; };
+		74B3505728A6CF2F00C5234C /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		74B3505B28A72DC000C5234C /* CompactRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactRepoCell.swift; sourceTree = "<group>"; };
 		74B3505D28A805D800C5234C /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		74B3505F28A811CD00C5234C /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
@@ -91,6 +101,16 @@
 		74B3508528A95DD400C5234C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		74B3508828A9619B00C5234C /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		74B3508C28A9858000C5234C /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
+		74B3508E28A9862600C5234C /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		74B3509028A988ED00C5234C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
+		74B3509428A9A9FA00C5234C /* CommitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitModel.swift; sourceTree = "<group>"; };
+		74FEEFE528AACFC200C598BB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
+		74FEEFE728AAD05700C598BB /* AuthenticationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
+		74FEEFE928AAD16A00C598BB /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		74FEEFEC28AADBD000C598BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		74FEEFEE28AADBE700C598BB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A4C25B3B3A70D7EBF6A09110 /* Pods-QuickGit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickGit.debug.xcconfig"; path = "Target Support Files/Pods-QuickGit/Pods-QuickGit.debug.xcconfig"; sourceTree = "<group>"; };
 		CAACD1BEA39ACEA39F75346F /* Pods-QuickGit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickGit.release.xcconfig"; path = "Target Support Files/Pods-QuickGit/Pods-QuickGit.release.xcconfig"; sourceTree = "<group>"; };
 		E9229EE17E3D5ADBE8686DBD /* Pods_QuickGit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickGit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,10 +166,11 @@
 		744C046B28A4249A004DDFC7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				74FEEFEB28AADBBA00C598BB /* Login */,
 				74B3508728A9618B00C5234C /* ViewModels */,
 				74B3506D28A8292700C5234C /* Reusable Profile View */,
-				74B3505928A72D5D00C5234C /* Custom Sub Views */,
 				7472D26428A42ACD00912C25 /* Reusable Multi Cell View */,
+				74B3505928A72D5D00C5234C /* Custom Sub Views */,
 				744C046F28A42524004DDFC7 /* Home View */,
 				74B3507628A8405200C5234C /* Settings View */,
 				74B3508128A84F6400C5234C /* Recent Search */,
@@ -162,7 +183,10 @@
 			children = (
 				74B3508428A95DB100C5234C /* ResponseModels */,
 				7454B69A28A6BEC600CA216D /* GithubEndPoint.swift */,
-				74B3505728A6CF2F00C5234C /* GithubHandler.swift */,
+				74B3505728A6CF2F00C5234C /* NetworkHandler.swift */,
+				74FEEFE528AACFC200C598BB /* NetworkInterceptor.swift */,
+				74FEEFE728AAD05700C598BB /* AuthenticationModule.swift */,
+				74FEEFE928AAD16A00C598BB /* APIKeys.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -376,6 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				74B3508528A95DD400C5234C /* UserModel.swift */,
+				74B3508E28A9862600C5234C /* RepositoryModel.swift */,
+				74B3509428A9A9FA00C5234C /* CommitModel.swift */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
@@ -384,9 +410,21 @@
 			isa = PBXGroup;
 			children = (
 				74B3508828A9619B00C5234C /* UserSearchViewModel.swift */,
+				74B3508C28A9858000C5234C /* ReposViewModel.swift */,
 				74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */,
+				74B3509028A988ED00C5234C /* ViewModelProtocol.swift */,
+				74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74FEEFEB28AADBBA00C598BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				74FEEFEC28AADBD000C598BB /* Login.storyboard */,
+				74FEEFEE28AADBE700C598BB /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		893984FC2CF96BF83B13A6C4 /* Pods */ = {
@@ -469,6 +507,7 @@
 				74B3506C28A8205400C5234C /* UserHeaderView.xib in Resources */,
 				744C046428A42484004DDFC7 /* LaunchScreen.storyboard in Resources */,
 				744C046128A42484004DDFC7 /* Assets.xcassets in Resources */,
+				74FEEFED28AADBD000C598BB /* Login.storyboard in Resources */,
 				7454B68428A651CD00CA216D /* OptionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7454B69228A69A4C00CA216D /* ReusableMultiCellView.swift in Sources */,
+				74B3509328A9A9CB00C5234C /* CommitsViewModel.swift in Sources */,
 				74B3506428A81C5D00C5234C /* RecentSearchCell.swift in Sources */,
 				7472D27028A45F6F00912C25 /* AuthCoordinator.swift in Sources */,
 				74B3505E28A805D800C5234C /* ContentType.swift in Sources */,
@@ -535,6 +575,7 @@
 				74B3508628A95DD400C5234C /* UserModel.swift in Sources */,
 				74B3508928A9619B00C5234C /* UserSearchViewModel.swift in Sources */,
 				7454B69B28A6BEC600CA216D /* GithubEndPoint.swift in Sources */,
+				74B3509528A9A9FA00C5234C /* CommitModel.swift in Sources */,
 				7454B68B28A6599C00CA216D /* HomeTableDataModel.swift in Sources */,
 				744C045828A4247D004DDFC7 /* AppDelegate.swift in Sources */,
 				7454B69528A69F1B00CA216D /* CompactUserCell.swift in Sources */,
@@ -544,18 +585,25 @@
 				74B3505C28A72DC000C5234C /* CompactRepoCell.swift in Sources */,
 				74B3508328A84F7400C5234C /* TableViewHandler.swift in Sources */,
 				7472D26C28A45F5D00912C25 /* AppCoordinator.swift in Sources */,
+				74B3509128A988ED00C5234C /* ViewModelProtocol.swift in Sources */,
 				7454B67F28A562A600CA216D /* HomeViewModel.swift in Sources */,
-				74B3505828A6CF2F00C5234C /* GithubHandler.swift in Sources */,
+				74B3505828A6CF2F00C5234C /* NetworkHandler.swift in Sources */,
 				7472D26A28A45EE400912C25 /* BaseCoordinator.swift in Sources */,
 				74B3507E28A84C1300C5234C /* RecentSearchViewController.swift in Sources */,
 				7454B68E28A681C300CA216D /* +UIImage.swift in Sources */,
+				74FEEFEF28AADBE700C598BB /* LoginView.swift in Sources */,
 				74B3507328A82A3400C5234C /* ProfilePageOptions.swift in Sources */,
 				7472D26E28A45F6700912C25 /* MainCoordinator.swift in Sources */,
 				74B3506628A81E8B00C5234C /* LastSearchCard.swift in Sources */,
+				74FEEFE828AAD05700C598BB /* AuthenticationModule.swift in Sources */,
 				7454B69828A6A2A400CA216D /* ReusableTableViewTableHandler.swift in Sources */,
 				74B3508028A84F5B00C5234C /* CollectionViewHandler.swift in Sources */,
+				74B3508F28A9862600C5234C /* RepositoryModel.swift in Sources */,
+				74B3508D28A9858000C5234C /* ReposViewModel.swift in Sources */,
 				7472D26328A4298D00912C25 /* HomeTableViewHandler.swift in Sources */,
+				74FEEFEA28AAD16A00C598BB /* APIKeys.swift in Sources */,
 				74B3507528A8404D00C5234C /* SettingsViewController.swift in Sources */,
+				74FEEFE628AACFC200C598BB /* NetworkInterceptor.swift in Sources */,
 				74B3508B28A96B2C00C5234C /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

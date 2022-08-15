@@ -11,7 +11,7 @@ final class AppCoordinator: Coordinator {
     lazy var mainCoordinator = MainCoordinator(with: navigationController)
     lazy var authCoordinator = AuthCoordinator(with: navigationController)
     private var hasCredentials: Bool {
-        return true
+        return false
     }
     
     static var userMode: String {

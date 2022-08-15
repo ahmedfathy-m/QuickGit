@@ -8,10 +8,29 @@
 import Foundation
 
 enum ContentType {
-    case users
-    case repos
-    case commits
+    case users(_ pageType: UsersPageType)
+    case repos(_ pageType: RepositoryPageType)
+    case commits(_ targetRepo: String)
     case bookmarks
+    
+    var targetRepo: String {
+        switch self {
+        case .commits(let target): return target
+        default: return ""
+        }
+    }
+}
+
+enum UsersPageType {
+    case popularUsers
+    case searchQuery(_ query: String)
+}
+
+enum RepositoryPageType {
+    case someUser(_ userName: String)
+    case searchQuery(_ query: String)
+    case popularRepos
+    case starredRepos(_ userName: String)
 }
 
 enum CellType: Int, CaseIterable, CustomStringConvertible {

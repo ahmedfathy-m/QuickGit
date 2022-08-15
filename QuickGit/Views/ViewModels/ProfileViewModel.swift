@@ -21,7 +21,7 @@ class ProfileViewModel {
     func start() async throws {
         switch userName {
         case nil: break
-        case .some(_): dataModel = try await GitHubHandler().handleRequest(using: .someUser(""), parameters: [:], headers: nil)
+        case .some(_): dataModel = try await NetworkHandler().loadRequest(using: .someUser(userName ?? "ahmedfathy-m"), parameters: nil, headers: nil)
         }
     }
     

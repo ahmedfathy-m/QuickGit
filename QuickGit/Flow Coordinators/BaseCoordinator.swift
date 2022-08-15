@@ -9,6 +9,7 @@ import UIKit
 
 class Coordinator {
     let navigationController: UINavigationController
+//    weak var parentCoordinator: Coordinator?
     
     func start() {
         

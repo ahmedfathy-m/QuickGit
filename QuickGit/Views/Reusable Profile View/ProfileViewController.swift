@@ -53,8 +53,12 @@ class ProfileViewController: UIViewController {
     }
     
     //MARK: - Navigation
-    func goToUsersRepos() {
-        coordinator?.goToReposSearch()
+    func goToUsersRepos(login: String) {
+        coordinator?.goToUserRepoistories(login)
+    }
+    
+    func goToStarredReposBy(login: String) {
+        coordinator?.goToStarredRepositories(login)
     }
     
     func didUpdateDataModel() {
