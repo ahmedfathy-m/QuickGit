@@ -42,7 +42,7 @@ class ReusableMultiCellView: UIViewController {
         return myTableView
     }()
     lazy var handler = ReusableTableViewTableHandler(contentType: contentType)
-    let searchController = UISearchController(searchResultsController: RecentSearchViewController())
+    let searchController = UISearchController()
     var viewModel: ViewModelProtocol?
     
     let loadingIndicator: UIActivityIndicatorView = {

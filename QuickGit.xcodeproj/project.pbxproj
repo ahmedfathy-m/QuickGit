@@ -165,7 +165,6 @@
 			children = (
 				749A8A8C28AD8D1000C65D50 /* Model.xcdatamodeld */,
 				7454B68C28A681B800CA216D /* Extensions */,
-				744C046E28A424D0004DDFC7 /* Model */,
 				744C046D28A424A9004DDFC7 /* Flow Coordinators */,
 				744C046B28A4249A004DDFC7 /* Views */,
 				744C046C28A424A1004DDFC7 /* Networking */,
@@ -216,13 +215,6 @@
 				7472D26F28A45F6F00912C25 /* AuthCoordinator.swift */,
 			);
 			path = "Flow Coordinators";
-			sourceTree = "<group>";
-		};
-		744C046E28A424D0004DDFC7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		744C046F28A42524004DDFC7 /* Home View */ = {
