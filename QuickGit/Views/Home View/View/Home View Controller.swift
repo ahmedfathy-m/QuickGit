@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         searchController.searchResultsUpdater = self
+        self.title = "Home"
+        self.tabBarItem.image = UIImage(systemName: "house.fill")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,11 +39,9 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        view.addSubview(UIView(frame: .zero))
-        searchController.searchBar.searchTextField.backgroundColor = .lightGray.withAlphaComponent(0.4)
+        setUpTableView()
         tabBarController?.navigationItem.searchController = searchController
         tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
-        setUpTableView()
     }
     
     //MARK: - UI Actions
@@ -65,10 +65,12 @@ extension HomeViewController {
         tableViewHandler.superView = self
         tableView.register(OptionCell.nib(), forCellReuseIdentifier: OptionCell.identifier)
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
     }
 }
 

@@ -15,6 +15,10 @@ class ProfileViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
+        if viewModel.userName == nil {
+            self.title = "Profile"
+            self.tabBarItem.image = UIImage(systemName: "person.fill")
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -23,8 +27,27 @@ class ProfileViewController: UIViewController {
     //MARK: - UI Elements
     let tableView = UITableView(frame: .null, style: .grouped)
     let handler = ProfileTableHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if viewModel.userName == nil {
+            switch AppCoordinator.userMode {
+            case .authenticated: break
+                
+            case .guest:
+                tableView.isHidden = true
+                let imageView: UIImageView = {
+                    let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
+                    let image = UIImage(named: "login")
+                    view.image = image
+                    return view
+                }()
+                imageView.center = view.center
+                view.addSubview(imageView)
+            }
+        }
+        
         tableView.register(OptionCell.nib(), forCellReuseIdentifier: OptionCell.identifier)
         tableView.register(UserHeaderView.nib(), forHeaderFooterViewReuseIdentifier: UserHeaderView.identifier)
         tableView.dataSource = handler

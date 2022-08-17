@@ -23,6 +23,9 @@ struct UserModel: Decodable {
     let userID: Int
     let userName: String
     let avatarURL: String
+    var userURL: String {
+        return "https://github.com/\(userName)"
+    }
     
     enum CodingKeys: String, CodingKey {
         case userID = "id"
@@ -35,17 +38,19 @@ struct ProfileModel: Decodable {
     let userID: Int
     let userName: String
     let avatarURL: String
-    let fullName: String
+    let fullName: String?
     let location: String?
     let bio: String?
     let followers: Int
     let following: Int
+    let numberOfRepos: Int
     
     enum CodingKeys: String, CodingKey {
         case userID = "id"
         case userName = "login"
         case avatarURL = "avatar_url"
         case fullName = "name"
+        case numberOfRepos = "public_repos"
         case location, bio, followers, following
     }
 }

@@ -42,7 +42,13 @@ extension ProfileTableHandler: UITableViewDelegate {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: UserHeaderView.identifier) as! UserHeaderView
         let profileModel = (tableView.parentViewController as! ProfileViewController).viewModel.dataModel
         header.profileModel = profileModel
-        header.bookmarkButton.isHidden = true
+        let parentVC = tableView.parentViewController as! ProfileViewController
+        if parentVC.viewModel.userName == nil {
+            header.bookmarkButton.isHidden = true
+        } else {
+            header.bookmarkButton.isHidden = false
+        }
+
         header.buttonAction = {
             print("Really")
         }

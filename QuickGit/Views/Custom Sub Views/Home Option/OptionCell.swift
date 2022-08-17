@@ -15,6 +15,7 @@ class OptionCell: UITableViewCell {
     @IBOutlet weak var cellIcon: UIImageView!
     @IBOutlet weak var cellSwitch: UISwitch!
     
+    var switchAction: (()->())?
     //MARK: - Cell Configuration
     var sectionType: OptionType? {
         didSet {
@@ -32,9 +33,13 @@ class OptionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         cellIcon.layer.cornerRadius = 4
+        
 //        self.accessoryType = .disclosureIndicator
     }
     
+    @IBAction func switchAction(_ sender: UISwitch) {
+        switchAction?()
+    }
     //MARK: - Nib and Identifier
     
     static func nib() -> UINib {

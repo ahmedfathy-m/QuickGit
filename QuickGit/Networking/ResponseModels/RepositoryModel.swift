@@ -24,7 +24,11 @@ struct Repository: Decodable {
     let repoName: String
     let repoDescription: String?
     let starsCount: Int
+    let followers: Int
     let devLang: String?
+    var repoURL: String {
+        return "https://github.com/\(repoName)"
+    }
     
     enum CodingKeys: String, CodingKey {
         case repoID = "id"
@@ -32,5 +36,6 @@ struct Repository: Decodable {
         case repoDescription = "description"
         case starsCount = "stargazers_count"
         case devLang = "language"
+        case followers = "watchers_count"
     }
 }

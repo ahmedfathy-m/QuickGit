@@ -10,10 +10,16 @@ import UIKit
 final class AuthCoordinator: Coordinator {
     var parentCoordinator: AppCoordinator?
     
+    lazy var authView: LoginView? = {
+        let view = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginView
+        view.coordinator = self
+        return view
+    }()
+    
     override func start() {
-        let authView = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginView
-        authView.coordinator = self
-        navigationController.pushViewController(authView, animated: true)
+        if let authView = authView {
+            navigationController.setViewControllers([authView], animated: true)
+        }
     }
     
     func didFinishAuthentication() {
@@ -21,4 +27,5 @@ final class AuthCoordinator: Coordinator {
             self.parentCoordinator?.mainCoordinator.start()
         }
     }
+    
 }

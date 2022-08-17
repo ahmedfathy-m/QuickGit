@@ -18,13 +18,13 @@ class RecentSearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         collectionView.register(LastSearchCard.self, forCellWithReuseIdentifier: "searchCard")
         collectionView.dataSource = collectionHandler
         collectionView.delegate = collectionHandler
         tableView.register(RecentSearchCell.self, forCellReuseIdentifier: "recentSearch")
         tableView.dataSource = tableHandler
         tableView.delegate = tableHandler
-        view.backgroundColor = .white
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,7 +36,7 @@ class RecentSearchViewController: UIViewController {
         lastSearchLabel.text = "LAST SEARCH"
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 120, height: 120)
+        layout.itemSize = CGSize(width: 100, height: 100)
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false

@@ -19,15 +19,12 @@ class NetworkHandler {
         let encoder = URLEncodedFormEncoder(allowedCharacters: allowedCharSet)
         let parameterEncoder = URLEncodedFormParameterEncoder(encoder: encoder, destination: .queryString)
         
-        let queryParams = parameters ?? endpoint.params
-        print(queryParams)
+        let queryParams = parameters ?? endpoint.defaultParameters
         
         let dataRequest = session.request("\(endpoint.targetURL)", method: .get, parameters: queryParams, encoder: parameterEncoder)
-//        let dataRaw = try await dataRequest.serializingString().value
-//        print(dataRaw)
-        let data =  try await dataRequest.serializingDecodable(DataModelType.self).value
+        let dataTask = dataRequest.serializingDecodable(DataModelType.self)
         
-        print(dataRequest.request?.headers)
+        let data =  try await dataTask.value
         
         return data
     }

@@ -24,7 +24,13 @@ class LoginView: UIViewController {
         module.configure(client: APIKeys.clientID, secret: APIKeys.clientSecret)
         module.onAuthenticationCompletion = {
             self.coordinator?.didFinishAuthentication()
+            AppCoordinator.userMode = .authenticated
         }
         module.askForUserPermission(scope: .user)
+    }
+    
+    @IBAction func guestModeSelected(_ sender: UIButton) {
+        AppCoordinator.userMode = .guest
+        self.coordinator?.didFinishAuthentication()
     }
 }

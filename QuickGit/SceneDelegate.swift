@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let appCoordinator = AppCoordinator(with: navigationController)
         window?.rootViewController = navigationController
+        window?.backgroundColor = UserDefaults.standard.bool(forKey: "DarkModeEnabled") ? .black : .white
+        window?.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: "DarkModeEnabled") ? .dark : .light
         window?.makeKeyAndVisible()
         appCoordinator.start()
     }
@@ -49,6 +51,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        // Save changes in the application's managed object context when the application transitions to the background.
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+    
 }
 

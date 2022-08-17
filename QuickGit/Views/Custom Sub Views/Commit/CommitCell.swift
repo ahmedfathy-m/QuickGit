@@ -28,6 +28,11 @@ class CommitCell: UITableViewCell {
     let committerImage = UIImageView()
     let commit = UILabel()
     
+    
+    @objc func longPressed(){
+        print("Pressed")
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.accessoryType = .disclosureIndicator

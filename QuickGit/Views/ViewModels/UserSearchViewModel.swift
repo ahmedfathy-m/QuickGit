@@ -18,26 +18,36 @@ class UserSearchViewModel: ViewModelProtocol {
     weak var delegate: ViewModelDelegate?
     
     var itemCount: Int {
-        return dataModel?.items.count ?? 0
+        return dataModel?.count ?? 0
     }
     
-    var dataModel: UserSearchModel? {
+    var dataModel: [UserModel]? {
         didSet {
             delegate?.didUpdateDataModel()
         }
     }
     
-    var cachedModel: UserSearchModel?
+    var cachedModel: [UserModel]?
     
     func start() async throws{
-        dataModel = try await NetworkHandler().loadRequest(using: .popularUsers, parameters: nil, headers: nil)
+        let model: UserSearchModel = try await NetworkHandler().loadRequest(using: .popularUsers("1"), parameters: nil, headers: nil)
+        dataModel = model.items
+    }
+    
+    var currentPage = 1
+    
+    func getNextPage() async throws{
+        currentPage += 1
+        let model : UserSearchModel = try await NetworkHandler().loadRequest(using: .popularUsers(String(currentPage)), parameters: nil, headers: nil)
+        dataModel?.append(contentsOf: model.items)
     }
     
     func search(query: String) async throws {
         if cachedModel == nil {
             cachedModel = dataModel
         }
-        dataModel = try await NetworkHandler().loadRequest(using: .popularUsers, parameters: ["q": query], headers: nil)
+        let model: UserSearchModel = try await NetworkHandler().loadRequest(using: .popularUsers(String()), parameters: ["q": query], headers: nil)
+        dataModel = model.items
     }
     
     func restoreDataModel() {

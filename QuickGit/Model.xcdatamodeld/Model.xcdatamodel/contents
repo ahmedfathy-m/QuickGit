@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookmarkedRepository" representedClassName="BookmarkedRepository" syncable="YES" codeGenerationType="class">
+        <attribute name="devLang" optional="YES" attributeType="String"/>
+        <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="repoAbout" optional="YES" attributeType="String"/>
+        <attribute name="repoID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="repoName" attributeType="String"/>
+        <attribute name="starsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="repoID"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="BookmarkedUser" representedClassName=".BookmarkedUser" syncable="YES" codeGenerationType="class">
+        <attribute name="followers" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="following" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="userName" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="userName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RecentSearchQuery" representedClassName=".RecentSearchQuery" syncable="YES" codeGenerationType="class">
+        <attribute name="query" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="RecentSearchRepo" representedClassName="RecentSearchRepo" syncable="YES" codeGenerationType="class"/>
+    <entity name="RecentSearchUser" representedClassName="RecentSearchUser" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="BookmarkedRepository" positionX="-54" positionY="45" width="128" height="119"/>
+        <element name="BookmarkedUser" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="RecentSearchQuery" positionX="-54" positionY="63" width="128" height="44"/>
+        <element name="RecentSearchUser" positionX="-45" positionY="72" width="128" height="44"/>
+        <element name="RecentSearchRepo" positionX="-36" positionY="81" width="128" height="29"/>
+    </elements>
+</model>

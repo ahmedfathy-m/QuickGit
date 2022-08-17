@@ -12,21 +12,23 @@ enum GitHubEndPoint {
         return "https://api.github.com"
     }
     
-    var params: [String:String]{
+    var defaultParameters: [String:String]{
         switch self {
-        case .popularUsers:
+        case .popularUsers(let page):
 //            return ["q": "repos:%3E35+followers:%3E1000"]
-            return ["q": "repos:>35+followers:>1000"]
+            return ["q": "repos:>35+followers:>1000",
+                    "per_page":"30",
+                    "page":page]
             
         case .someUser(_):
             return [:]
         case .userRepos(_):
             return [:]
-        case .browseRepos:
+        case .browseRepos(let page):
             return ["q": "stars:>2000",
                     "sort": "stars",
                     "per_page": "10",
-                    "page": "1"]
+                    "page": page]
         case .commitsInRepository(let target):
             return ["q": "repo:\(target)+is:public",
                     "per_page": "10",
@@ -34,6 +36,8 @@ enum GitHubEndPoint {
         case .starredReposByUser(_):
             return [:]
         case .searchUsers(_):
+            return [:]
+        case .authenticatedUser:
             return [:]
         }
     }
@@ -47,15 +51,17 @@ enum GitHubEndPoint {
         case .commitsInRepository: return "\(baseURL)/search/commits"
         case .starredReposByUser(let user): return "\(baseURL)/users/\(user)/starred"
         case .searchUsers(_): return "\(baseURL)/search/users"
+        case .authenticatedUser: return "\(baseURL)/user"
         }
     }
     
-    case popularUsers
-    case browseRepos
+    case popularUsers(_ page: String)
+    case browseRepos(_ page: String)
     case searchUsers(_ query: String)
     case someUser(_ user: String)
     case userRepos(_ user: String)
     case commitsInRepository(_ repo: String)
     case starredReposByUser(_ user: String)
+    case authenticatedUser
     
 }

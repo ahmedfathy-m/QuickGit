@@ -19,9 +19,17 @@ class ProfileViewModel {
     }
     
     func start() async throws {
-        switch userName {
-        case nil: break
-        case .some(_): dataModel = try await NetworkHandler().loadRequest(using: .someUser(userName ?? "ahmedfathy-m"), parameters: nil, headers: nil)
+        switch AppCoordinator.userMode {
+            case .guest:
+            if userName != nil {
+                dataModel = try await NetworkHandler().loadRequest(using: .someUser(userName ?? "ahmedfathy-m"), parameters: nil, headers: nil)
+            }
+            case .authenticated:
+            if userName != nil {
+                dataModel = try await NetworkHandler().loadRequest(using: .someUser(userName ?? "ahmedfathy-m"), parameters: nil, headers: nil)
+            } else {
+                dataModel = try await NetworkHandler().loadRequest(using: .authenticatedUser, parameters: nil, headers: nil)
+            }
         }
     }
     

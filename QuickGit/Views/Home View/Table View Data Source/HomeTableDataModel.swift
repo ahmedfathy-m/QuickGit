@@ -94,7 +94,7 @@ enum HomeSectionModel: Int, CaseIterable, CustomStringConvertible {
         
         var description: String {
             switch self {
-            case .mode: return AppCoordinator.userMode
+            case .mode: return AppCoordinator.userMode.rawValue
             }
         }
         

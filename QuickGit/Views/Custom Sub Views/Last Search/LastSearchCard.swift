@@ -25,6 +25,7 @@ class LastSearchCard: UICollectionViewCell {
         
         userLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(userLabel)
+        userLabel.font = UIFont.systemFont(ofSize: 14)
         userLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         userLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 15).isActive = true
         userLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true

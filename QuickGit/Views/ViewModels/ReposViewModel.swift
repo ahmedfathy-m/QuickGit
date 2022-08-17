@@ -37,11 +37,36 @@ class ReposViewModel: ViewModelProtocol {
             dataModel = array
         case .searchQuery: break
         case .popularRepos:
-            model = try await NetworkHandler().loadRequest(using: .browseRepos, parameters: nil, headers: nil)
+            model = try await NetworkHandler().loadRequest(using: .browseRepos("1"), parameters: nil, headers: nil)
             dataModel = model?.items
         case .starredRepos(let userName):
             let array: [Repository] = try await NetworkHandler().loadRequest(using: .starredReposByUser(userName), parameters: nil, headers: nil)
             dataModel = array
+        }
+    }
+    
+    var currentPage = 1
+    
+    func getNextPage() async throws{
+        currentPage += 1
+        let model : RepositorySearchModel = try await NetworkHandler().loadRequest(using: .browseRepos(String(currentPage)), parameters: nil, headers: nil)
+        dataModel?.append(contentsOf: model.items)
+    }
+    
+    var cachedModel: [Repository]?
+    
+    func search(query: String) async throws {
+        if cachedModel == nil {
+            cachedModel = dataModel
+        }
+        let model: RepositorySearchModel = try await NetworkHandler().loadRequest(using: .browseRepos("1"), parameters: ["q": query], headers: nil)
+        dataModel = model.items
+    }
+    
+    func restoreDataModel() {
+        if cachedModel != nil {
+            dataModel = cachedModel
+            cachedModel = nil
         }
     }
 }
