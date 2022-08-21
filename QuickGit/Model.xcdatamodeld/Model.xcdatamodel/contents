@@ -37,7 +37,7 @@
         <element name="BookmarkedRepository" positionX="-54" positionY="45" width="128" height="119"/>
         <element name="BookmarkedUser" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="RecentSearchQuery" positionX="-54" positionY="63" width="128" height="44"/>
-        <element name="RecentSearchUser" positionX="-45" positionY="72" width="128" height="44"/>
         <element name="RecentSearchRepo" positionX="-36" positionY="81" width="128" height="29"/>
+        <element name="RecentSearchUser" positionX="-45" positionY="72" width="128" height="44"/>
     </elements>
 </model>

@@ -59,6 +59,12 @@
 		74B3509128A988ED00C5234C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509028A988ED00C5234C /* ViewModelProtocol.swift */; };
 		74B3509328A9A9CB00C5234C /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */; };
 		74B3509528A9A9FA00C5234C /* CommitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509428A9A9FA00C5234C /* CommitModel.swift */; };
+		74ED21F028AFEC750078C59F /* ExploreCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */; };
+		74ED21F728AFEEFA0078C59F /* Multi-Entry View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21F628AFEEFA0078C59F /* Multi-Entry View.swift */; };
+		74ED21FA28AFF5CA0078C59F /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21F928AFF5CA0078C59F /* BookmarksView.swift */; };
+		74ED21FC28AFF5EE0078C59F /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21FB28AFF5EE0078C59F /* BookmarksViewModel.swift */; };
+		74ED220428B289D80078C59F /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED220328B289D80078C59F /* CoreDataHelper.swift */; };
+		74ED220728B296AA0078C59F /* ContextMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED220628B296AA0078C59F /* ContextMenuOptions.swift */; };
 		74FEEFE628AACFC200C598BB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFE528AACFC200C598BB /* NetworkInterceptor.swift */; };
 		74FEEFE828AAD05700C598BB /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEEFE728AAD05700C598BB /* AuthenticationModule.swift */; };
 		74FEEFED28AADBD000C598BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FEEFEC28AADBD000C598BB /* Login.storyboard */; };
@@ -121,6 +127,12 @@
 		74B3509028A988ED00C5234C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
 		74B3509428A9A9FA00C5234C /* CommitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitModel.swift; sourceTree = "<group>"; };
+		74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCellViewModel.swift; sourceTree = "<group>"; };
+		74ED21F628AFEEFA0078C59F /* Multi-Entry View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Multi-Entry View.swift"; sourceTree = "<group>"; };
+		74ED21F928AFF5CA0078C59F /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
+		74ED21FB28AFF5EE0078C59F /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
+		74ED220328B289D80078C59F /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		74ED220628B296AA0078C59F /* ContextMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuOptions.swift; sourceTree = "<group>"; };
 		74FEEFE528AACFC200C598BB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
 		74FEEFE728AAD05700C598BB /* AuthenticationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
 		74FEEFEC28AADBD000C598BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 				749A8A8C28AD8D1000C65D50 /* Model.xcdatamodeld */,
 				7454B68C28A681B800CA216D /* Extensions */,
 				744C046D28A424A9004DDFC7 /* Flow Coordinators */,
+				74B3508728A9618B00C5234C /* ViewModels */,
 				744C046B28A4249A004DDFC7 /* Views */,
 				744C046C28A424A1004DDFC7 /* Networking */,
 				744C045728A4247D004DDFC7 /* AppDelegate.swift */,
@@ -180,13 +193,12 @@
 		744C046B28A4249A004DDFC7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				749A8A7D28AD8B5500C65D50 /* Explore */,
-				74FEEFEB28AADBBA00C598BB /* Login */,
-				74B3508728A9618B00C5234C /* ViewModels */,
-				74B3506D28A8292700C5234C /* Reusable Profile View */,
+				74ED21F428AFEEC80078C59F /* Blueprints */,
 				7472D26428A42ACD00912C25 /* Reusable Multi Cell View */,
+				74ED21F328AFECE60078C59F /* Tabs */,
+				74ED21F228AFECD20078C59F /* Common */,
+				74FEEFEB28AADBBA00C598BB /* Login */,
 				74B3505928A72D5D00C5234C /* Custom Sub Views */,
-				744C046F28A42524004DDFC7 /* Home View */,
 				74B3507628A8405200C5234C /* Settings View */,
 				74B3508128A84F6400C5234C /* Recent Search */,
 			);
@@ -217,14 +229,14 @@
 			path = "Flow Coordinators";
 			sourceTree = "<group>";
 		};
-		744C046F28A42524004DDFC7 /* Home View */ = {
+		744C046F28A42524004DDFC7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				7454B68828A6548400CA216D /* View */,
 				7454B68728A6547400CA216D /* Table View Data Source */,
 				7454B68628A6546900CA216D /* View Model */,
 			);
-			path = "Home View";
+			path = Home;
 			sourceTree = "<group>";
 		};
 		7454B68528A6540400CA216D /* Home Option */ = {
@@ -315,10 +327,11 @@
 		749A8A7D28AD8B5500C65D50 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				74ED21F128AFECA80078C59F /* View */,
 				749A8A7F28AD8B5F00C65D50 /* ExploreDataModel.swift */,
 				749A8A7E28AD8B5F00C65D50 /* ExploreTableCell.swift */,
+				74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */,
 				749A8A8028AD8B5F00C65D50 /* ExploreTableHandler.swift */,
-				749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -379,14 +392,14 @@
 			path = "User Header";
 			sourceTree = "<group>";
 		};
-		74B3506D28A8292700C5234C /* Reusable Profile View */ = {
+		74B3506D28A8292700C5234C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				74B3506E28A8295400C5234C /* ProfileViewController.swift */,
 				74B3507028A829E600C5234C /* ProfileTableHandler.swift */,
 				74B3507228A82A3400C5234C /* ProfilePageOptions.swift */,
 			);
-			path = "Reusable Profile View";
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		74B3507628A8405200C5234C /* Settings View */ = {
@@ -445,6 +458,67 @@
 				74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74ED21F128AFECA80078C59F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74ED21F228AFECD20078C59F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		74ED21F328AFECE60078C59F /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				74ED21F828AFF5B90078C59F /* Bookmarks */,
+				744C046F28A42524004DDFC7 /* Home */,
+				74B3506D28A8292700C5234C /* Profile */,
+				749A8A7D28AD8B5500C65D50 /* Explore */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		74ED21F428AFEEC80078C59F /* Blueprints */ = {
+			isa = PBXGroup;
+			children = (
+				74ED220528B2969A0078C59F /* CoreDataHelper */,
+				74ED21F528AFEED00078C59F /* Multi-Entry View */,
+			);
+			path = Blueprints;
+			sourceTree = "<group>";
+		};
+		74ED21F528AFEED00078C59F /* Multi-Entry View */ = {
+			isa = PBXGroup;
+			children = (
+				74ED21F628AFEEFA0078C59F /* Multi-Entry View.swift */,
+			);
+			path = "Multi-Entry View";
+			sourceTree = "<group>";
+		};
+		74ED21F828AFF5B90078C59F /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				74ED21F928AFF5CA0078C59F /* BookmarksView.swift */,
+				74ED21FB28AFF5EE0078C59F /* BookmarksViewModel.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		74ED220528B2969A0078C59F /* CoreDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				74ED220328B289D80078C59F /* CoreDataHelper.swift */,
+				74ED220628B296AA0078C59F /* ContextMenuOptions.swift */,
+			);
+			path = CoreDataHelper;
 			sourceTree = "<group>";
 		};
 		74FEEFEB28AADBBA00C598BB /* Login */ = {
@@ -601,6 +675,7 @@
 				74B3506A28A8204A00C5234C /* UserHeaderView.swift in Sources */,
 				74B3506F28A8295400C5234C /* ProfileViewController.swift in Sources */,
 				749A8A8B28AD8C8700C65D50 /* APIKeys.swift in Sources */,
+				74ED21FA28AFF5CA0078C59F /* BookmarksView.swift in Sources */,
 				74B3506028A811CD00C5234C /* CommitCell.swift in Sources */,
 				74B3507828A840A500C5234C /* SettingsTableHandler.swift in Sources */,
 				74B3508628A95DD400C5234C /* UserModel.swift in Sources */,
@@ -610,15 +685,19 @@
 				7454B68B28A6599C00CA216D /* HomeTableDataModel.swift in Sources */,
 				749A8A8228AD8B5F00C65D50 /* ExploreTableCell.swift in Sources */,
 				749A8A7B28AD8B2700C65D50 /* ExploreCollectionCell.swift in Sources */,
+				74ED21FC28AFF5EE0078C59F /* BookmarksViewModel.swift in Sources */,
 				744C045828A4247D004DDFC7 /* AppDelegate.swift in Sources */,
 				7454B69528A69F1B00CA216D /* CompactUserCell.swift in Sources */,
 				749A8A8328AD8B5F00C65D50 /* ExploreDataModel.swift in Sources */,
+				74ED21F728AFEEFA0078C59F /* Multi-Entry View.swift in Sources */,
 				744C045A28A4247E004DDFC7 /* SceneDelegate.swift in Sources */,
 				74B3507128A829E600C5234C /* ProfileTableHandler.swift in Sources */,
 				7454B68328A651CD00CA216D /* OptionCell.swift in Sources */,
 				74B3505C28A72DC000C5234C /* CompactRepoCell.swift in Sources */,
 				74B3508328A84F7400C5234C /* TableViewHandler.swift in Sources */,
+				74ED21F028AFEC750078C59F /* ExploreCellViewModel.swift in Sources */,
 				7472D26C28A45F5D00912C25 /* AppCoordinator.swift in Sources */,
+				74ED220728B296AA0078C59F /* ContextMenuOptions.swift in Sources */,
 				74B3509128A988ED00C5234C /* ViewModelProtocol.swift in Sources */,
 				7454B67F28A562A600CA216D /* HomeViewModel.swift in Sources */,
 				74B3505828A6CF2F00C5234C /* NetworkHandler.swift in Sources */,
@@ -636,6 +715,7 @@
 				749A8A8428AD8B5F00C65D50 /* ExploreTableHandler.swift in Sources */,
 				74B3508D28A9858000C5234C /* ReposViewModel.swift in Sources */,
 				7472D26328A4298D00912C25 /* HomeTableViewHandler.swift in Sources */,
+				74ED220428B289D80078C59F /* CoreDataHelper.swift in Sources */,
 				74B3507528A8404D00C5234C /* SettingsViewController.swift in Sources */,
 				74FEEFE628AACFC200C598BB /* NetworkInterceptor.swift in Sources */,
 				749A8A8E28AD8D1000C65D50 /* Model.xcdatamodeld in Sources */,

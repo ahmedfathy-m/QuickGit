@@ -14,7 +14,8 @@ final class MainCoordinator: Coordinator {
         let home = HomeViewController()
         let profileViewModel = ProfileViewModel(with: nil)
         let profile = ProfileViewController(viewModel: profileViewModel)
-        let bookmarks = ReusableMultiCellView(contentType: .bookmarks)
+//        let bookmarks = ReusableMultiCellView(contentType: .bookmarks)
+        let bookmarks = BookmarksView()
         let explore = ExploreViewController()
         home.coordinator = self
         bookmarks.coordinator = self

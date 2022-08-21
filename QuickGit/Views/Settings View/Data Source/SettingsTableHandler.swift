@@ -24,7 +24,21 @@ class SettingsTableHandler: NSObject, UITableViewDataSource {
         cell.backgroundColor = .lightGray.withAlphaComponent(0.3)
         let section = SettingsOptions(rawValue: indexPath.section)
         switch section {
-        case .general: cell.sectionType = SettingsOptions.GeneralSettings(rawValue: indexPath.row)
+        case .general:
+            cell.sectionType = SettingsOptions.GeneralSettings(rawValue: indexPath.row)
+            cell.switchAction = {
+                let window = cell.window
+                print(window)
+                if cell.cellSwitch.isOn {
+                    UserDefaults.standard.set(true, forKey: "DarkModeEnabled")
+                    window?.backgroundColor = .black
+                    window?.overrideUserInterfaceStyle = .dark
+                } else {
+                    UserDefaults.standard.set(false, forKey: "DarkModeEnabled")
+                    window?.backgroundColor = .white
+                    window?.overrideUserInterfaceStyle = .light
+                }
+            }
         case .policy: cell.sectionType = SettingsOptions.PolicyOptions(rawValue: indexPath.row)
         case .language: cell.sectionType = SettingsOptions.LocaleOptions(rawValue: indexPath.row)
         case .account: cell.sectionType = SettingsOptions.AccountOptions(rawValue: indexPath.row)
