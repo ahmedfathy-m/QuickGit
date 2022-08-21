@@ -72,7 +72,11 @@ enum HomeSectionModel: Int, CaseIterable, CustomStringConvertible {
         
         var description: String {
             switch self {
-            case .repo: return "My Repo"
+            case .repo:
+                if CoreDataHelper.shared.bookmarkedRepos.count > 0 {
+                    return CoreDataHelper.shared.bookmarkedRepos[0].repoName ?? "My Repo"
+                }
+                return "My Repo"
             }
         }
         

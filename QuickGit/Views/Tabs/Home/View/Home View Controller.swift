@@ -27,7 +27,13 @@ class HomeViewController: UIViewController {
         viewModel.delegate = self
         searchController.searchResultsUpdater = self
         self.title = "Home"
+        tabBarController?.navigationItem.title = "Home"
         self.tabBarItem.image = UIImage(systemName: "house.fill")
+        
+        let settingsButton = UIButton()
+        settingsButton.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingsButton)
         
         tabBarController?.navigationItem.searchController = searchController
         tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
@@ -35,10 +41,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "Home"
-        let settingsButton = UIButton()
-        settingsButton.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
-        settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
-        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingsButton)
     }
     
     override func viewDidLayoutSubviews() {

@@ -60,7 +60,14 @@ extension HomeTableViewHandler: UITableViewDelegate {
             case .issues: break
             case .gitweb: UIApplication.shared.open(URL(string: "https://github.com/")!)
             }
-        case .Repos: break
+        case .Repos: 
+            guard let item = HomeSectionModel.ReposSection(rawValue: indexPath.row) else { return }
+            switch item {
+            case .repo:
+                let cell = tableView.cellForRow(at: indexPath) as! OptionCell
+                guard cell.cellLabel.text != "My Repo" else { return }
+                (tableView.parentViewController as! HomeViewController).coordinator?.goToCommitsView(cell.cellLabel.text!)
+            }
         case .Mode: break
         }
     }

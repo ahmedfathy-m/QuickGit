@@ -76,6 +76,7 @@ final class MainCoordinator: Coordinator {
         reposVC.viewModel = RepositoriesViewModel(by: login)
         reposVC.doesHaveSearchBar = false
         reposVC.coordinator = self
+        reposVC.navigationItem.largeTitleDisplayMode = .always
         navigationController.pushViewController(reposVC, animated: true)
     }
     
@@ -84,6 +85,7 @@ final class MainCoordinator: Coordinator {
         reposVC.viewModel = RepositoriesViewModel(starredBy: login)
         reposVC.doesHaveSearchBar = false
         reposVC.coordinator = self
+        reposVC.navigationItem.largeTitleDisplayMode = .always
         navigationController.pushViewController(reposVC, animated: true)
     }
     
