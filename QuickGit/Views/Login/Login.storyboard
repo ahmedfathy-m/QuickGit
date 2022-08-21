@@ -19,7 +19,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqO-ah-JFJ">
                                 <rect key="frame" x="132.5" y="675" width="149" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Sign In With Github"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sign In With Github">
+                                    <backgroundConfiguration key="background" cornerRadius="20"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="loginPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="a2H-vp-uyx"/>
                                 </connections>
@@ -27,7 +29,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-lG-ZDR">
                                 <rect key="frame" x="117" y="731" width="180" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Continue in Guest Mode"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue in Guest Mode">
+                                    <backgroundConfiguration key="background" cornerRadius="20"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="guestModeSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="seg-Ho-AkP"/>
                                 </connections>

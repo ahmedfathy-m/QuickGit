@@ -24,10 +24,16 @@ extension CoreDataHelper {
             if let cell = cell as? CompactUserCell {
                 let bookmarkedUser = BookmarkedUser(context: self.context!)
                 bookmarkedUser.userName = cell.userLabel.text
+                bookmarkedUser.image = cell.userImage.image?.jpegData(compressionQuality: 0.8)
                 
             } else if let cell = cell as? CompactRepoCell {
                 let bookmarkedRepo = BookmarkedRepository(context: self.context!)
+                bookmarkedRepo.repoID = Int32(cell.repoModel!.repoID)
                 bookmarkedRepo.repoName = cell.repoModel?.repoName
+                bookmarkedRepo.devLang = cell.repoModel?.devLang
+                bookmarkedRepo.starsCount = Int32(cell.repoModel!.starsCount)
+                bookmarkedRepo.repoAbout = cell.repoModel?.repoDescription
+                
             }
             
             do {

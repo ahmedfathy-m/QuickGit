@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MultiEntryView: UIViewController, ViewModelDelegate, UITableViewDelegate {
+class MultiEntryView: UIViewController, ViewModelDelegate {
     //MARK: - View Configuration
     weak var coordinator: MainCoordinator?
     var viewModel: ViewModelProtocol?
@@ -18,12 +18,7 @@ class MultiEntryView: UIViewController, ViewModelDelegate, UITableViewDelegate {
         }
     }
     
-    var isRefreshEnabled: Bool = true {
-        didSet {
-            refreshControl.isEnabled = isRefreshEnabled
-            print(isRefreshEnabled)
-        }
-    }
+    var doesHaveSearchBar: Bool = true
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -60,22 +55,25 @@ class MultiEntryView: UIViewController, ViewModelDelegate, UITableViewDelegate {
     
     lazy var longPressGesture = UILongPressGestureRecognizer(target: self, action: nil)
     
-    lazy var refreshControl = UIRefreshControl()
-    
     //MARK: - LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        // UISearchController
+        if doesHaveSearchBar {
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
+        
         Task {
             do {
                 try await viewModel?.start()
             } catch {
-                let errorMessage = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .actionSheet)
-                errorMessage.addAction(UIAlertAction(title: "OK", style: .cancel))
-                present(errorMessage, animated: true)
+                presentError(error)
             }
         }
     }
@@ -91,16 +89,14 @@ class MultiEntryView: UIViewController, ViewModelDelegate, UITableViewDelegate {
             ]
         )
         
-        // RefreshControl
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshed), for: .valueChanged)
-        
         // UILongPressGestureRecognizer Configuration
         tableView.addGestureRecognizer(longPressGesture)
         
         // UIActivityIndicator Configuration
         view.addSubview(requestIndicator)
         requestIndicator.center = view.center
+        
+
     }
     
     
@@ -116,22 +112,12 @@ class MultiEntryView: UIViewController, ViewModelDelegate, UITableViewDelegate {
         tableView.reloadData()
     }
     
-    //MARK: - Refresh Actions
-    func onRefresh() {
-        refreshed()
+    func presentError(_ error: Error) {
+        let errorMessage = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .actionSheet)
+        errorMessage.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(errorMessage, animated: true)
     }
-    
-    func didFinishRefreshing() {
-        refreshControl.endRefreshing()
-    }
-    
-    @objc fileprivate func refreshed() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        didFinishRefreshing()
-    }
-    
+       
     
     //MARK: - ViewModelDelegate Methods
     func didUpdateDataModel() {
@@ -176,7 +162,7 @@ extension MultiEntryView: UITableViewDataSource {
     }
 }
 
-extension MultiEntryView {
+extension MultiEntryView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DispatchQueue.main.async {
             tableView.deselectRow(at: indexPath, animated: true)

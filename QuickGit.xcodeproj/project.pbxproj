@@ -17,9 +17,7 @@
 		7454B68428A651CD00CA216D /* OptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7454B68228A651CD00CA216D /* OptionCell.xib */; };
 		7454B68B28A6599C00CA216D /* HomeTableDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B68A28A6599C00CA216D /* HomeTableDataModel.swift */; };
 		7454B68E28A681C300CA216D /* +UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B68D28A681C300CA216D /* +UIImage.swift */; };
-		7454B69228A69A4C00CA216D /* ReusableMultiCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B69128A69A4C00CA216D /* ReusableMultiCellView.swift */; };
 		7454B69528A69F1B00CA216D /* CompactUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B69428A69F1B00CA216D /* CompactUserCell.swift */; };
-		7454B69828A6A2A400CA216D /* ReusableTableViewTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B69728A6A2A400CA216D /* ReusableTableViewTableHandler.swift */; };
 		7454B69B28A6BEC600CA216D /* GithubEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454B69A28A6BEC600CA216D /* GithubEndPoint.swift */; };
 		7472D26328A4298D00912C25 /* HomeTableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472D26228A4298D00912C25 /* HomeTableViewHandler.swift */; };
 		7472D26A28A45EE400912C25 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472D26928A45EE400912C25 /* BaseCoordinator.swift */; };
@@ -34,9 +32,14 @@
 		749A8A8528AD8B5F00C65D50 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */; };
 		749A8A8B28AD8C8700C65D50 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749A8A8A28AD8C8700C65D50 /* APIKeys.swift */; };
 		749A8A8E28AD8D1000C65D50 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 749A8A8C28AD8D1000C65D50 /* Model.xcdatamodeld */; };
+		74AE1FC528B2A2F4001163B2 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FC428B2A2F4001163B2 /* UsersListView.swift */; };
+		74AE1FC728B2A3DE001163B2 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FC628B2A3DE001163B2 /* UsersViewModel.swift */; };
+		74AE1FC928B2BB15001163B2 /* ReposListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FC828B2BB15001163B2 /* ReposListView.swift */; };
+		74AE1FCB28B2BB38001163B2 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FCA28B2BB38001163B2 /* ReposViewModel.swift */; };
+		74AE1FCE28B2C368001163B2 /* CommitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FCD28B2C368001163B2 /* CommitsListView.swift */; };
+		74AE1FD028B2C386001163B2 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE1FCF28B2C386001163B2 /* CommitViewModel.swift */; };
 		74B3505828A6CF2F00C5234C /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505728A6CF2F00C5234C /* NetworkHandler.swift */; };
 		74B3505C28A72DC000C5234C /* CompactRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505B28A72DC000C5234C /* CompactRepoCell.swift */; };
-		74B3505E28A805D800C5234C /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505D28A805D800C5234C /* ContentType.swift */; };
 		74B3506028A811CD00C5234C /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3505F28A811CD00C5234C /* CommitCell.swift */; };
 		74B3506428A81C5D00C5234C /* RecentSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3506328A81C5D00C5234C /* RecentSearchCell.swift */; };
 		74B3506628A81E8B00C5234C /* LastSearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3506528A81E8B00C5234C /* LastSearchCard.swift */; };
@@ -52,12 +55,9 @@
 		74B3508028A84F5B00C5234C /* CollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3507F28A84F5B00C5234C /* CollectionViewHandler.swift */; };
 		74B3508328A84F7400C5234C /* TableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508228A84F7400C5234C /* TableViewHandler.swift */; };
 		74B3508628A95DD400C5234C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508528A95DD400C5234C /* UserModel.swift */; };
-		74B3508928A9619B00C5234C /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508828A9619B00C5234C /* UserSearchViewModel.swift */; };
 		74B3508B28A96B2C00C5234C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */; };
-		74B3508D28A9858000C5234C /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508C28A9858000C5234C /* ReposViewModel.swift */; };
 		74B3508F28A9862600C5234C /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3508E28A9862600C5234C /* RepositoryModel.swift */; };
 		74B3509128A988ED00C5234C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509028A988ED00C5234C /* ViewModelProtocol.swift */; };
-		74B3509328A9A9CB00C5234C /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */; };
 		74B3509528A9A9FA00C5234C /* CommitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B3509428A9A9FA00C5234C /* CommitModel.swift */; };
 		74ED21F028AFEC750078C59F /* ExploreCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */; };
 		74ED21F728AFEEFA0078C59F /* Multi-Entry View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED21F628AFEEFA0078C59F /* Multi-Entry View.swift */; };
@@ -85,9 +85,7 @@
 		7454B68228A651CD00CA216D /* OptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionCell.xib; sourceTree = "<group>"; };
 		7454B68A28A6599C00CA216D /* HomeTableDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableDataModel.swift; sourceTree = "<group>"; };
 		7454B68D28A681C300CA216D /* +UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIImage.swift"; sourceTree = "<group>"; };
-		7454B69128A69A4C00CA216D /* ReusableMultiCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableMultiCellView.swift; sourceTree = "<group>"; };
 		7454B69428A69F1B00CA216D /* CompactUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactUserCell.swift; sourceTree = "<group>"; };
-		7454B69728A6A2A400CA216D /* ReusableTableViewTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewTableHandler.swift; sourceTree = "<group>"; };
 		7454B69A28A6BEC600CA216D /* GithubEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubEndPoint.swift; sourceTree = "<group>"; };
 		7472D26228A4298D00912C25 /* HomeTableViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHandler.swift; sourceTree = "<group>"; };
 		7472D26928A45EE400912C25 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -102,9 +100,14 @@
 		749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		749A8A8A28AD8C8700C65D50 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		749A8A8D28AD8D1000C65D50 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		74AE1FC428B2A2F4001163B2 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
+		74AE1FC628B2A3DE001163B2 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		74AE1FC828B2BB15001163B2 /* ReposListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListView.swift; sourceTree = "<group>"; };
+		74AE1FCA28B2BB38001163B2 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
+		74AE1FCD28B2C368001163B2 /* CommitsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsListView.swift; sourceTree = "<group>"; };
+		74AE1FCF28B2C386001163B2 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
 		74B3505728A6CF2F00C5234C /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		74B3505B28A72DC000C5234C /* CompactRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactRepoCell.swift; sourceTree = "<group>"; };
-		74B3505D28A805D800C5234C /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		74B3505F28A811CD00C5234C /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
 		74B3506328A81C5D00C5234C /* RecentSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCell.swift; sourceTree = "<group>"; };
 		74B3506528A81E8B00C5234C /* LastSearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchCard.swift; sourceTree = "<group>"; };
@@ -120,12 +123,9 @@
 		74B3507F28A84F5B00C5234C /* CollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHandler.swift; sourceTree = "<group>"; };
 		74B3508228A84F7400C5234C /* TableViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHandler.swift; sourceTree = "<group>"; };
 		74B3508528A95DD400C5234C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		74B3508828A9619B00C5234C /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		74B3508C28A9858000C5234C /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		74B3508E28A9862600C5234C /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		74B3509028A988ED00C5234C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
-		74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
 		74B3509428A9A9FA00C5234C /* CommitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitModel.swift; sourceTree = "<group>"; };
 		74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCellViewModel.swift; sourceTree = "<group>"; };
 		74ED21F628AFEEFA0078C59F /* Multi-Entry View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Multi-Entry View.swift"; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				749A8A8C28AD8D1000C65D50 /* Model.xcdatamodeld */,
 				7454B68C28A681B800CA216D /* Extensions */,
 				744C046D28A424A9004DDFC7 /* Flow Coordinators */,
-				74B3508728A9618B00C5234C /* ViewModels */,
 				744C046B28A4249A004DDFC7 /* Views */,
+				74B3508728A9618B00C5234C /* ViewModels */,
 				744C046C28A424A1004DDFC7 /* Networking */,
 				744C045728A4247D004DDFC7 /* AppDelegate.swift */,
 				744C045928A4247E004DDFC7 /* SceneDelegate.swift */,
@@ -194,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				74ED21F428AFEEC80078C59F /* Blueprints */,
-				7472D26428A42ACD00912C25 /* Reusable Multi Cell View */,
 				74ED21F328AFECE60078C59F /* Tabs */,
 				74ED21F228AFECD20078C59F /* Common */,
 				74FEEFEB28AADBBA00C598BB /* Login */,
@@ -289,32 +288,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		7454B69628A6A23500CA216D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7454B69128A69A4C00CA216D /* ReusableMultiCellView.swift */,
-				74B3505D28A805D800C5234C /* ContentType.swift */,
-			);
-			path = "\U0010View";
-			sourceTree = "<group>";
-		};
-		7454B69928A6A2A800CA216D /* Table View Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				7454B69728A6A2A400CA216D /* ReusableTableViewTableHandler.swift */,
-			);
-			path = "Table View Data Source";
-			sourceTree = "<group>";
-		};
-		7472D26428A42ACD00912C25 /* Reusable Multi Cell View */ = {
-			isa = PBXGroup;
-			children = (
-				7454B69628A6A23500CA216D /* View */,
-				7454B69928A6A2A800CA216D /* Table View Data Source */,
-			);
-			path = "Reusable Multi Cell View";
-			sourceTree = "<group>";
-		};
 		749A8A7828AD8B1A00C65D50 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,13 +300,40 @@
 		749A8A7D28AD8B5500C65D50 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				74ED21F128AFECA80078C59F /* View */,
+				749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */,
 				749A8A7F28AD8B5F00C65D50 /* ExploreDataModel.swift */,
 				749A8A7E28AD8B5F00C65D50 /* ExploreTableCell.swift */,
 				74ED21EF28AFEC750078C59F /* ExploreCellViewModel.swift */,
 				749A8A8028AD8B5F00C65D50 /* ExploreTableHandler.swift */,
 			);
 			path = Explore;
+			sourceTree = "<group>";
+		};
+		74AE1FC228B2A2D9001163B2 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FC828B2BB15001163B2 /* ReposListView.swift */,
+				74AE1FCA28B2BB38001163B2 /* ReposViewModel.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		74AE1FC328B2A2E1001163B2 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FC428B2A2F4001163B2 /* UsersListView.swift */,
+				74AE1FC628B2A3DE001163B2 /* UsersViewModel.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		74AE1FCC28B2C0E4001163B2 /* Commits */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FCD28B2C368001163B2 /* CommitsListView.swift */,
+				74AE1FCF28B2C386001163B2 /* CommitViewModel.swift */,
+			);
+			path = Commits;
 			sourceTree = "<group>";
 		};
 		74B3505928A72D5D00C5234C /* Custom Sub Views */ = {
@@ -396,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				74B3506E28A8295400C5234C /* ProfileViewController.swift */,
+				74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */,
 				74B3507028A829E600C5234C /* ProfileTableHandler.swift */,
 				74B3507228A82A3400C5234C /* ProfilePageOptions.swift */,
 			);
@@ -451,26 +452,17 @@
 		74B3508728A9618B00C5234C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				74B3508828A9619B00C5234C /* UserSearchViewModel.swift */,
-				74B3508C28A9858000C5234C /* ReposViewModel.swift */,
-				74B3508A28A96B2C00C5234C /* ProfileViewModel.swift */,
 				74B3509028A988ED00C5234C /* ViewModelProtocol.swift */,
-				74B3509228A9A9CB00C5234C /* CommitsViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		74ED21F128AFECA80078C59F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				749A8A8128AD8B5F00C65D50 /* ExploreViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		74ED21F228AFECD20078C59F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				74AE1FC228B2A2D9001163B2 /* Repositories */,
+				74AE1FCC28B2C0E4001163B2 /* Commits */,
+				74AE1FC328B2A2E1001163B2 /* Users */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -665,21 +657,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7454B69228A69A4C00CA216D /* ReusableMultiCellView.swift in Sources */,
-				74B3509328A9A9CB00C5234C /* CommitsViewModel.swift in Sources */,
 				74B3506428A81C5D00C5234C /* RecentSearchCell.swift in Sources */,
 				7472D27028A45F6F00912C25 /* AuthCoordinator.swift in Sources */,
-				74B3505E28A805D800C5234C /* ContentType.swift in Sources */,
 				744C045C28A4247E004DDFC7 /* Home View Controller.swift in Sources */,
+				74AE1FD028B2C386001163B2 /* CommitViewModel.swift in Sources */,
 				74B3507A28A840BE00C5234C /* SettingsViewDataModel.swift in Sources */,
 				74B3506A28A8204A00C5234C /* UserHeaderView.swift in Sources */,
+				74AE1FCB28B2BB38001163B2 /* ReposViewModel.swift in Sources */,
 				74B3506F28A8295400C5234C /* ProfileViewController.swift in Sources */,
 				749A8A8B28AD8C8700C65D50 /* APIKeys.swift in Sources */,
+				74AE1FC928B2BB15001163B2 /* ReposListView.swift in Sources */,
 				74ED21FA28AFF5CA0078C59F /* BookmarksView.swift in Sources */,
 				74B3506028A811CD00C5234C /* CommitCell.swift in Sources */,
 				74B3507828A840A500C5234C /* SettingsTableHandler.swift in Sources */,
 				74B3508628A95DD400C5234C /* UserModel.swift in Sources */,
-				74B3508928A9619B00C5234C /* UserSearchViewModel.swift in Sources */,
 				7454B69B28A6BEC600CA216D /* GithubEndPoint.swift in Sources */,
 				74B3509528A9A9FA00C5234C /* CommitModel.swift in Sources */,
 				7454B68B28A6599C00CA216D /* HomeTableDataModel.swift in Sources */,
@@ -695,6 +686,7 @@
 				7454B68328A651CD00CA216D /* OptionCell.swift in Sources */,
 				74B3505C28A72DC000C5234C /* CompactRepoCell.swift in Sources */,
 				74B3508328A84F7400C5234C /* TableViewHandler.swift in Sources */,
+				74AE1FCE28B2C368001163B2 /* CommitsListView.swift in Sources */,
 				74ED21F028AFEC750078C59F /* ExploreCellViewModel.swift in Sources */,
 				7472D26C28A45F5D00912C25 /* AppCoordinator.swift in Sources */,
 				74ED220728B296AA0078C59F /* ContextMenuOptions.swift in Sources */,
@@ -709,14 +701,14 @@
 				7472D26E28A45F6700912C25 /* MainCoordinator.swift in Sources */,
 				74B3506628A81E8B00C5234C /* LastSearchCard.swift in Sources */,
 				74FEEFE828AAD05700C598BB /* AuthenticationModule.swift in Sources */,
-				7454B69828A6A2A400CA216D /* ReusableTableViewTableHandler.swift in Sources */,
 				74B3508028A84F5B00C5234C /* CollectionViewHandler.swift in Sources */,
 				74B3508F28A9862600C5234C /* RepositoryModel.swift in Sources */,
 				749A8A8428AD8B5F00C65D50 /* ExploreTableHandler.swift in Sources */,
-				74B3508D28A9858000C5234C /* ReposViewModel.swift in Sources */,
 				7472D26328A4298D00912C25 /* HomeTableViewHandler.swift in Sources */,
 				74ED220428B289D80078C59F /* CoreDataHelper.swift in Sources */,
+				74AE1FC728B2A3DE001163B2 /* UsersViewModel.swift in Sources */,
 				74B3507528A8404D00C5234C /* SettingsViewController.swift in Sources */,
+				74AE1FC528B2A2F4001163B2 /* UsersListView.swift in Sources */,
 				74FEEFE628AACFC200C598BB /* NetworkInterceptor.swift in Sources */,
 				749A8A8E28AD8D1000C65D50 /* Model.xcdatamodeld in Sources */,
 				749A8A8528AD8B5F00C65D50 /* ExploreViewController.swift in Sources */,
@@ -860,6 +852,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WZ92WPK5PN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickGit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -887,6 +880,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WZ92WPK5PN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickGit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

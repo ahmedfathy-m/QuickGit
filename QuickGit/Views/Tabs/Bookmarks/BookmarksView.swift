@@ -13,7 +13,6 @@ class BookmarksView: MultiEntryView {
         title = "Bookmarks"
         titleImage = UIImage(systemName: "bookmark.fill")
         viewModel = BookmarksViewModel()
-        isRefreshEnabled = false
         requestIndicator.stopAnimating()
     }
     

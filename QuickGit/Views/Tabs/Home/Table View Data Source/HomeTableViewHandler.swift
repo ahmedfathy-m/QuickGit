@@ -45,12 +45,6 @@ class HomeTableViewHandler: NSObject, UITableViewDataSource {
 }
 
 extension HomeTableViewHandler: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        (view as! UITableViewHeaderFooterView).textLabel?.textColor = .black
-        (view as! UITableViewHeaderFooterView).textLabel?.text = (view as! UITableViewHeaderFooterView).textLabel?.text?.capitalized
-        
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let homeVC = tableView.parentViewController as! HomeViewController

@@ -63,11 +63,11 @@ class ExploreCellViewModel {
                       "per_page":"10",
                       "page":"1",
                       "sort":"repositories"]
-        listModel = try await NetworkHandler().loadRequest(using: .searchUsers("repos:>30"), parameters: params, headers: nil)
+        listModel = try await NetworkHandler.shared.loadRequest(using: .searchUsers, parameters: params, headers: nil)
         if let items = listModel?.items {
             dataModel = [ProfileModel]()
             for userResult in items {
-                let profileModel: ProfileModel = try await NetworkHandler().loadRequest(using: .someUser(userResult.userName), parameters: nil, headers: nil)
+                let profileModel: ProfileModel = try await NetworkHandler.shared.loadRequest(using: .someUser(userResult.userName), parameters: nil, headers: nil)
                 dataModel?.append(profileModel)
             }
         }
@@ -79,7 +79,7 @@ class ExploreCellViewModel {
                       "per_page":"10",
                       "page":"1",
                       "sort":"followers"]
-        let model: RepositorySearchModel = try await NetworkHandler().loadRequest(using: .browseRepos("1"), parameters: params, headers: nil)
+        let model: RepositorySearchModel = try await NetworkHandler.shared.loadRequest(using: .browseRepos, parameters: params, headers: nil)
         repos = model.items
     }
     
@@ -89,7 +89,7 @@ class ExploreCellViewModel {
                       "per_page":"10",
                       "page":"1",
                       "sort":"followers"]
-        let model: RepositorySearchModel = try await NetworkHandler().loadRequest(using: .browseRepos("1"), parameters: params, headers: nil)
+        let model: RepositorySearchModel = try await NetworkHandler.shared.loadRequest(using: .browseRepos, parameters: params, headers: nil)
         swiftRepos = model.items
     }
     

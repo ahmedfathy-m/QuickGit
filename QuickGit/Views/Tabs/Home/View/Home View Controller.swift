@@ -28,6 +28,9 @@ class HomeViewController: UIViewController {
         searchController.searchResultsUpdater = self
         self.title = "Home"
         self.tabBarItem.image = UIImage(systemName: "house.fill")
+        
+        tabBarController?.navigationItem.searchController = searchController
+        tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,8 +43,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         setUpTableView()
-        tabBarController?.navigationItem.searchController = searchController
-        tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     //MARK: - UI Actions

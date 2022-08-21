@@ -11,6 +11,7 @@ import Alamofire
 class NetworkHandler {
     
     static let shared = NetworkHandler()
+    private init() {}
     let session = Session(interceptor: NetworkInterceptor())
     func loadRequest<DataModelType: Decodable>(using endpoint: GitHubEndPoint, parameters: [String: String]?, headers: HTTPHeaders?) async throws -> DataModelType {
         

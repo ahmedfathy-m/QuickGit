@@ -38,30 +38,28 @@ final class MainCoordinator: Coordinator {
     }
     
     func goToUserSearch() {
-        let userVC = ReusableMultiCellView(contentType: .users(.popularUsers))
-        userVC.coordinator = self
-        userVC.title = "Users"
-        navigationController.pushViewController(userVC, animated: true)
+        let usersVC = UsersListView()
+        usersVC.coordinator = self
+        navigationController.pushViewController(usersVC, animated: true)
     }
     
     func goToReposSearch() {
-        let reposVC = ReusableMultiCellView(contentType: .repos(.popularRepos))
+        let reposVC = ReposListView()
         reposVC.coordinator = self
-        reposVC.title = "Repositories"
         navigationController.pushViewController(reposVC, animated: true)
     }
     
     func goToCommitsView(_ targetRepo: String) {
-        let commitsVC = ReusableMultiCellView(contentType: .commits(targetRepo))
+        let commitsVC = CommitsListView()
+        commitsVC.viewModel = CommitViewModel(repoName: targetRepo)
         commitsVC.coordinator = self
-        commitsVC.title = "Commits"
         navigationController.pushViewController(commitsVC, animated: true)
     }
     
     func goToUser(with name: String?) {
         let viewModel = ProfileViewModel(with: name)
         let userVC = ProfileViewController(viewModel: viewModel)
-        userVC.navigationItem.title = "User"
+        userVC.navigationItem.largeTitleDisplayMode = .never
         userVC.coordinator = self
         navigationController.pushViewController(userVC, animated: true)
     }
@@ -74,16 +72,18 @@ final class MainCoordinator: Coordinator {
     }
     
     func goToUserRepoistories(_ login: String) {
-        let reposVC = ReusableMultiCellView(contentType: .repos(.someUser(login)))
+        let reposVC = ReposListView()
+        reposVC.viewModel = RepositoriesViewModel(by: login)
+        reposVC.doesHaveSearchBar = false
         reposVC.coordinator = self
-        reposVC.title = "Repositories"
         navigationController.pushViewController(reposVC, animated: true)
     }
     
     func goToStarredRepositories(_ login: String) {
-        let reposVC = ReusableMultiCellView(contentType: .repos(.starredRepos(login)))
+        let reposVC = ReposListView()
+        reposVC.viewModel = RepositoriesViewModel(starredBy: login)
+        reposVC.doesHaveSearchBar = false
         reposVC.coordinator = self
-        reposVC.title = "Repositories"
         navigationController.pushViewController(reposVC, animated: true)
     }
     
