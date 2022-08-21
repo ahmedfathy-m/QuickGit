@@ -25,4 +25,15 @@ class CoreDataHelper {
         bookmarkedUsers = try context!.fetch(usersRequest)
         bookmarkedRepos = try context!.fetch(reposRequest)
     }
+    
+    func clearData() throws {
+        bookmarkedRepos.forEach { repo in
+            context?.delete(repo)
+        }
+        bookmarkedUsers.forEach { user in
+            context?.delete(user)
+        }
+        
+        try context?.save()
+    }
 }

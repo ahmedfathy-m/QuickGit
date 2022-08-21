@@ -26,9 +26,9 @@ class SettingsTableHandler: NSObject, UITableViewDataSource {
         switch section {
         case .general:
             cell.sectionType = SettingsOptions.GeneralSettings(rawValue: indexPath.row)
+            cell.cellSwitch.isOn = UserDefaults.standard.bool(forKey: "DarkModeEnabled")
             cell.switchAction = {
                 let window = cell.window
-                print(window)
                 if cell.cellSwitch.isOn {
                     UserDefaults.standard.set(true, forKey: "DarkModeEnabled")
                     window?.backgroundColor = .black
@@ -55,6 +55,31 @@ class SettingsTableHandler: NSObject, UITableViewDataSource {
 
 extension SettingsTableHandler: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let parentVC = tableView.parentViewController
+        let section = SettingsOptions(rawValue: indexPath.section)
+        switch section {
+        case .general:
+            let cell = SettingsOptions.GeneralSettings(rawValue: indexPath.row)
+            switch cell {
+            case .clearBookmarks:
+                let alert = UIAlertController(title: "Warning", message: "This option will delete all locally bookmarked items.\n Are you Sure?", preferredStyle: .actionSheet)
+                let action = UIAlertAction(title: "Yes", style: .default) { _ in
+                    do {
+                        try CoreDataHelper.shared.clearData()
+                    } catch {
+                        print(error)
+                    }
+                }
+                let cancel = UIAlertAction(title: "No", style: .cancel) { _ in
+                    return
+                }
+                alert.addAction(action)
+                alert.addAction(cancel)
+                parentVC?.present(alert, animated: true)
+            default: break
+            }
+        default: break
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
