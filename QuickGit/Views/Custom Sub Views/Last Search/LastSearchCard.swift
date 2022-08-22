@@ -9,25 +9,36 @@ import UIKit
 
 class LastSearchCard: UICollectionViewCell {
     //MARK: - UI Elements
-    let userImage = UIImageView()
-    let userLabel = UILabel()
+    lazy var userImage: UIImageView = {
+        let myImage = UIImageView()
+        myImage.translatesAutoresizingMaskIntoConstraints = false
+        myImage.layer.cornerRadius = 25
+        myImage.clipsToBounds = true
+        return myImage
+    }()
+    
+    lazy var userLabel: UILabel = {
+        let myLabel = UILabel()
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
+        myLabel.font = UIFont.systemFont(ofSize: 14)
+        myLabel.textAlignment = .center
+        myLabel.numberOfLines = 0
+        return myLabel
+    }()
     
     //MARK: - UI Setup
     override func layoutSubviews() {
-        userImage.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(userImage)
-        userImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        userImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        userImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        userImage.layer.cornerRadius = 25
-        userImage.clipsToBounds = true
+        NSLayoutConstraint.activate([userImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                                     userImage.widthAnchor.constraint(equalToConstant: 50),
+                                     userImage.heightAnchor.constraint(equalToConstant: 50),
+                                     userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)])
+
         
-        userLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(userLabel)
-        userLabel.font = UIFont.systemFont(ofSize: 14)
-        userLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        userLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 15).isActive = true
-        userLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        NSLayoutConstraint.activate([userLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                                     userLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 5),
+//                                     userLabel.heightAnchor.constraint(equalToConstant: 20),
+                                     userLabel.widthAnchor.constraint(equalToConstant: 50)])
     }
 }

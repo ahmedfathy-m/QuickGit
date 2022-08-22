@@ -54,23 +54,58 @@ extension UsersListView {
         (viewModel as! UsersViewModel).configure(cell, at: indexPath)
         return cell
     }
-    
-    override func updateSearchResults(for searchController: UISearchController) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        Task {
-            do {
-                try await (viewModel as! UsersViewModel).search(for: searchController.searchBar.text ?? "")
-            } catch {
-                presentError(error)
-            }
-        }
-    }
 }
 
 extension UsersListView {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newUser = RecentSearchUser(context: CoreDataHelper.shared.context!)
+        let model = tableView.cellForRow(at: indexPath) as! CompactUserCell
+        newUser.userName = model.userLabel.text
+        newUser.image = model.userImage.image?.jpegData(compressionQuality: 0.8)
+        CoreDataHelper.shared.recentSearchedUsers.append(newUser)
+        do {
+            try CoreDataHelper.shared.context?.save()
+        } catch {
+            print(error.localizedDescription)
+        }
         coordinator?.goToUser(with: (viewModel as! UsersViewModel).dataModel[indexPath.row].userName)
         super.tableView(tableView, didSelectRowAt: indexPath)
+    }
+}
+
+//MARK: - SearchController Configurations
+
+extension UsersListView {
+    override func updateSearchResults(for searchController: UISearchController) {
+        resultsController.queryTapAction = { query in
+            searchController.searchBar.text = query
+        }
+        searchController.showsSearchResultsController = true
+    }
+    
+    func triggerSearchAction(using searchBar: UISearchBar) {
+        if !(searchBar.text!.isEmpty) {
+            Task {
+                do {
+                    try await (viewModel as! UsersViewModel).search(for: searchController.searchBar.text ?? "")
+                } catch {
+                    presentError(error)
+                }
+            }
+            let newQuery = RecentSearchQuery(context: CoreDataHelper.shared.context!)
+            newQuery.query = searchBar.text
+            CoreDataHelper.shared.recentQueries.append(newQuery)
+            do {
+                try CoreDataHelper.shared.context?.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            searchController.showsSearchResultsController = false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        triggerSearchAction(using: searchBar)
     }
 }

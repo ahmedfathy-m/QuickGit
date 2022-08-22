@@ -65,7 +65,22 @@ extension SettingsTableHandler: UITableViewDelegate {
                 let alert = UIAlertController(title: "Warning", message: "This option will delete all locally bookmarked items.\n Are you Sure?", preferredStyle: .actionSheet)
                 let action = UIAlertAction(title: "Yes", style: .default) { _ in
                     do {
-                        try CoreDataHelper.shared.clearData()
+                        try CoreDataHelper.shared.clearBookmarks()
+                    } catch {
+                        print(error)
+                    }
+                }
+                let cancel = UIAlertAction(title: "No", style: .cancel) { _ in
+                    return
+                }
+                alert.addAction(action)
+                alert.addAction(cancel)
+                parentVC?.present(alert, animated: true)
+            case .clearHistory:
+                let alert = UIAlertController(title: "Warning", message: "This option will delete all locally bookmarked items.\n Are you Sure?", preferredStyle: .actionSheet)
+                let action = UIAlertAction(title: "Yes", style: .default) { _ in
+                    do {
+                        try CoreDataHelper.shared.clearHistory()
                     } catch {
                         print(error)
                     }

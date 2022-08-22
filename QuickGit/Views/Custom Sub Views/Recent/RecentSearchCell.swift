@@ -18,27 +18,49 @@ class RecentSearchCell: UITableViewCell {
     }
     
     //MARK: - UI Elements
-    let recentQueryLabel = UILabel()
+    lazy var recentQueryLabel: UILabel = {
+        let myLabel = UILabel()
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
+        return myLabel
+    }()
+    
     let reuseQueryButton = UIButton()
-    let reuseQueryImage = UIImageView()
+    
+    lazy var reuseQueryIcon:UIImageView = {
+        let myImage = UIImageView()
+        myImage.translatesAutoresizingMaskIntoConstraints = false
+        myImage.image = UIImage(systemName: "arrow.up.left")
+        myImage.contentMode = .scaleAspectFill
+        return myImage
+    }()
+    
+    lazy var historyIcon:UIImageView = {
+       let myImage = UIImageView()
+        myImage.translatesAutoresizingMaskIntoConstraints = false
+        myImage.image = UIImage(systemName: "clock")
+        return myImage
+    }()
     
     //MARK: - UI Setup
     override func layoutSubviews() {
-        recentQueryLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .clear
+        
+        contentView.addSubview(historyIcon)
+        NSLayoutConstraint.activate([historyIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                                     historyIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+                                     historyIcon.widthAnchor.constraint(equalToConstant: 20),
+                                     historyIcon.heightAnchor.constraint(equalToConstant: 20)])
+        
         contentView.addSubview(recentQueryLabel)
-        recentQueryLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        recentQueryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
+        NSLayoutConstraint.activate([recentQueryLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                                     recentQueryLabel.leadingAnchor.constraint(equalTo: historyIcon.trailingAnchor, constant: 12)])
         
-        reuseQueryImage.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(reuseQueryImage)
-        reuseQueryImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        reuseQueryImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12).isActive = true
-        reuseQueryImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        reuseQueryImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        reuseQueryImage.image = UIImage(systemName: "arrow.up.left")
-        reuseQueryImage.contentMode = .scaleAspectFill
-//        reuseQueryImage.tintColor = .blue
-        
-        contentView.sizeToFit()
+        contentView.addSubview(reuseQueryIcon)
+        NSLayoutConstraint.activate([reuseQueryIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                                     reuseQueryIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+                                     reuseQueryIcon.widthAnchor.constraint(equalToConstant: 20),
+                                     reuseQueryIcon.heightAnchor.constraint(equalToConstant: 20)])
+
+
     }
 }

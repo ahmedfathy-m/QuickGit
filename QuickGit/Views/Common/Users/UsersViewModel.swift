@@ -11,7 +11,7 @@ class UsersViewModel: ViewModelProtocol {
     weak var delegate: ViewModelDelegate?
     
     fileprivate var currentPage = 1
-    fileprivate var currentQuery = "repos:>35+followers:>1000"
+    var currentQuery = "repos:>35+followers:>1000"
     fileprivate var chunkSize = 30
     
     fileprivate var reachedListEnd = false
@@ -59,6 +59,7 @@ class UsersViewModel: ViewModelProtocol {
     
     func search(for query: String) async throws {
         if !(query.isEmpty) {
+            currentPage = 1
             currentQuery = query
             if cachedModel.isEmpty {
                 cachedModel = dataModel

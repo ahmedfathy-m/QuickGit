@@ -54,17 +54,6 @@ extension ReposListView {
         (viewModel as! RepositoriesViewModel).configure(cell, at: indexPath)
         return cell
     }
-    
-    override func updateSearchResults(for searchController: UISearchController) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        Task {
-            do {
-                try await (viewModel as! RepositoriesViewModel).search(for: searchController.searchBar.text ?? "")
-            } catch {
-                presentError(error)
-            }
-        }
-    }
 }
 
 extension ReposListView {
@@ -72,6 +61,43 @@ extension ReposListView {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.goToCommitsView((viewModel as! RepositoriesViewModel).dataModel[indexPath.row].repoName)
         super.tableView(tableView, didSelectRowAt: indexPath)
+    }
+}
+
+//MARK: - SearchController Configurations
+
+extension ReposListView {
+    override func updateSearchResults(for searchController: UISearchController) {
+        resultsController.isSearchingForUsers = false
+        resultsController.queryTapAction = { query in
+            searchController.searchBar.text = query
+        }
+        searchController.showsSearchResultsController = true
+    }
+    
+     func triggerSearchAction(using searchBar: UISearchBar) {
+        if !(searchBar.text!.isEmpty) {
+            Task {
+                do {
+                    try await (viewModel as! RepositoriesViewModel).search(for: searchController.searchBar.text ?? "")
+                } catch {
+                    presentError(error)
+                }
+            }
+            let newQuery = RecentSearchQuery(context: CoreDataHelper.shared.context!)
+            newQuery.query = searchBar.text
+            CoreDataHelper.shared.recentQueries.append(newQuery)
+            do {
+                try CoreDataHelper.shared.context?.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            searchController.showsSearchResultsController = false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        triggerSearchAction(using: searchBar)
     }
 }
 

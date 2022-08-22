@@ -8,58 +8,83 @@
 import UIKit
 
 class RecentSearchViewController: UIViewController {
-    let lastSearchLabel = UILabel()
-    let recentQueryLabel = UILabel()
-    let collectionView = UICollectionView(frame: .null, collectionViewLayout: UICollectionViewLayout())
-    let tableView = UITableView(frame: .null, style: .plain)
+    weak var coordinator: MainCoordinator?
+    lazy var tableView: UITableView = {
+        let myTable = UITableView(frame: .null, style: .grouped)
+        myTable.translatesAutoresizingMaskIntoConstraints = false
+        return myTable
+    }()
     
-    let collectionHandler = CollectionViewHandler()
-    let tableHandler = TableViewHandler()
-
+    let viewModel = RecentQueriesViewModel()
+    
+    var isSearchingForUsers = true
+    
+    var queryTapAction: (_ query: String) -> () = {query in
+        
+    }
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        collectionView.register(LastSearchCard.self, forCellWithReuseIdentifier: "searchCard")
-        collectionView.dataSource = collectionHandler
-        collectionView.delegate = collectionHandler
-        tableView.register(RecentSearchCell.self, forCellReuseIdentifier: "recentSearch")
-        tableView.dataSource = tableHandler
-        tableView.delegate = tableHandler
+        tableView.register(RecentSearchCell.self, forCellReuseIdentifier: "query")
+        tableView.register(RecentSearchHeader.self, forHeaderFooterViewReuseIdentifier: RecentSearchHeader.identifier)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
-        lastSearchLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(lastSearchLabel)
-        lastSearchLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
-        lastSearchLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        lastSearchLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        lastSearchLabel.text = "LAST SEARCH"
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: lastSearchLabel.bottomAnchor, constant: 15).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        
-        recentQueryLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(recentQueryLabel)
-        recentQueryLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15).isActive = true
-        recentQueryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        recentQueryLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        recentQueryLabel.text = "RECENT SEARCH"
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: recentQueryLabel.bottomAnchor, constant: 15).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
+}
+
+
+extension RecentSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.itemCount
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentSearchHeader.identifier) as! RecentSearchHeader
+        header.collectionView.reloadData()
+        header.cellTapAction = { username in
+            self.coordinator?.goToUser(with: username)
+        }
+        header.deleteAction = {
+            do {
+                try CoreDataHelper.shared.clearHistory()
+            } catch {
+                print(error.localizedDescription)
+            }
+            tableView.reloadData()
+            header.collectionView.reloadData()
+        }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isSearchingForUsers {
+            return 160
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "query", for: indexPath) as! RecentSearchCell
+        viewModel.configure(cell, at: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RecentSearchCell
+        queryTapAction(cell.recentQueryLabel.text ?? "")
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
 }

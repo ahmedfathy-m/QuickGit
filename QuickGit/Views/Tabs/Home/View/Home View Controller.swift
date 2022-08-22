@@ -19,13 +19,20 @@ class HomeViewController: UIViewController {
     }()
     let tableViewHandler = HomeTableViewHandler()
     let viewModel = HomeViewModel()
-    let searchController = UISearchController()
+    
+    lazy var suggestionsController: SearchSuggestionsView = {
+        let myVC = SearchSuggestionsView()
+        myVC.coordinator = coordinator
+        return myVC
+    }()
+    lazy var searchController = UISearchController(searchResultsController: suggestionsController)
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         searchController.searchResultsUpdater = self
+        searchController.showsSearchResultsController = true
         self.title = "Home"
         tabBarController?.navigationItem.title = "Home"
         self.tabBarItem.image = UIImage(systemName: "house.fill")
@@ -79,7 +86,7 @@ extension HomeViewController {
 
 extension HomeViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        suggestionsController.query = searchController.searchBar.text
     }
 }
 

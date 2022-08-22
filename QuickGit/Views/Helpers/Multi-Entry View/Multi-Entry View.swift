@@ -51,7 +51,18 @@ class MultiEntryView: UIViewController, ViewModelDelegate {
         return myIndicator
     }()
     
-    lazy var searchController = UISearchController()
+    lazy var resultsController: RecentSearchViewController = {
+        let myVC = RecentSearchViewController()
+        myVC.coordinator = coordinator
+        return myVC
+    }()
+    
+    lazy var searchController:UISearchController = {
+        let mySearch = UISearchController(searchResultsController: resultsController)
+        mySearch.showsSearchResultsController = true
+        mySearch.automaticallyShowsSearchResultsController = true
+        return mySearch
+    }()
     
     lazy var longPressGesture = UILongPressGestureRecognizer(target: self, action: nil)
     
@@ -62,6 +73,7 @@ class MultiEntryView: UIViewController, ViewModelDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         
         // UISearchController
         if doesHaveSearchBar {
@@ -132,7 +144,7 @@ class MultiEntryView: UIViewController, ViewModelDelegate {
 
 extension MultiEntryView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+
     }
 }
 
@@ -168,4 +180,8 @@ extension MultiEntryView: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
+}
+
+extension MultiEntryView: UISearchBarDelegate {
+    
 }
