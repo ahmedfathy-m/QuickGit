@@ -20,9 +20,9 @@ The app was written in Swift 5.6 using the MVVM pattern.
 - Long Press Context Menu using UILongPressGestureRecognizer
 - Dark Mode Control Option
 
-## Known Issues (as of August 19th)
-- Recent Search Entries doesn't pop up when tapping the search bar
-- Live search eats up your API requests quota in guest mode
+## Fixed Issues in the last commit
+- Fixed an issue where recent search suggestions don't show up.
+- Fixed the request quota problem by switching from search on type to search on editing end
 
 ## Todo list
 - Fixing Recent Search View
