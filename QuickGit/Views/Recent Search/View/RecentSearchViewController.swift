@@ -51,6 +51,9 @@ extension RecentSearchViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentSearchHeader.identifier) as! RecentSearchHeader
+        if header.viewModel.itemCount == 0 {
+            isSearchingForUsers = false
+        }
         header.collectionView.reloadData()
         header.cellTapAction = { username in
             self.coordinator?.goToUser(with: username)

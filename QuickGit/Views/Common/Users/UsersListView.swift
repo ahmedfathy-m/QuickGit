@@ -84,6 +84,10 @@ extension UsersListView {
         searchController.showsSearchResultsController = true
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
     func triggerSearchAction(using searchBar: UISearchBar) {
         if !(searchBar.text!.isEmpty) {
             Task {
@@ -108,4 +112,6 @@ extension UsersListView {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         triggerSearchAction(using: searchBar)
     }
+    
+    
 }

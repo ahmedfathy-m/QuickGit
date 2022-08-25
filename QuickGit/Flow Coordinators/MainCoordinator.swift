@@ -93,20 +93,23 @@ final class MainCoordinator: Coordinator {
         let usersVC = UsersListView()
         usersVC.coordinator = self
         usersVC.searchController.searchBar.text = query
+        (usersVC.viewModel as! UsersViewModel).currentQuery = query
         navigationController.pushViewController(usersVC, animated: true)
-        usersVC.triggerSearchAction(using: usersVC.searchController.searchBar)
+//
+//        usersVC.triggerSearchAction(using: usersVC.searchController.searchBar)
+
     }
     
     func searchReposWithQuery(_ query: String) {
         let reposVC = ReposListView()
         reposVC.coordinator = self
         reposVC.searchController.searchBar.text = query
+        (reposVC.viewModel as! RepositoriesViewModel).currentQuery = query
         navigationController.pushViewController(reposVC, animated: true)
-        reposVC.triggerSearchAction(using: reposVC.searchController.searchBar)
+//        reposVC.triggerSearchAction(using: reposVC.searchController.searchBar)
     }
     
     func returnToLogin() {
-        print(parentCoordinator)
         parentCoordinator?.authCoordinator.start()
     }
     

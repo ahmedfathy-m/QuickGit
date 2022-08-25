@@ -313,6 +313,47 @@
 			path = Explore;
 			sourceTree = "<group>";
 		};
+		74AD277128B7E0B6007D2601 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				74B3507D28A84C1300C5234C /* RecentSearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74AD277228B7E0C0007D2601 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FD828B40B40001163B2 /* RecentQueriesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		74AD277328B7E0C8007D2601 /* RecentSearchHeader */ = {
+			isa = PBXGroup;
+			children = (
+				74AD277428B7E0D0007D2601 /* View */,
+				74AD277528B7E0D4007D2601 /* ViewModel */,
+			);
+			path = RecentSearchHeader;
+			sourceTree = "<group>";
+		};
+		74AD277428B7E0D0007D2601 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FD128B3E315001163B2 /* RecentSearchHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74AD277528B7E0D4007D2601 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74AE1FD328B3F5A5001163B2 /* RecentlyVisitedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		74AE1FC228B2A2D9001163B2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,10 +485,9 @@
 		74B3508128A84F6400C5234C /* Recent Search */ = {
 			isa = PBXGroup;
 			children = (
-				74B3507D28A84C1300C5234C /* RecentSearchViewController.swift */,
-				74AE1FD828B40B40001163B2 /* RecentQueriesViewModel.swift */,
-				74AE1FD128B3E315001163B2 /* RecentSearchHeader.swift */,
-				74AE1FD328B3F5A5001163B2 /* RecentlyVisitedViewModel.swift */,
+				74AD277128B7E0B6007D2601 /* View */,
+				74AD277228B7E0C0007D2601 /* ViewModel */,
+				74AD277328B7E0C8007D2601 /* RecentSearchHeader */,
 			);
 			path = "Recent Search";
 			sourceTree = "<group>";

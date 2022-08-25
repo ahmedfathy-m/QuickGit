@@ -54,7 +54,9 @@ class UsersViewModel: ViewModelProtocol {
         
         if modelBefore == modelAfter {
             reachedListEnd = true
+            currentPage -= 1
         }
+        print("CurrentPage: \(currentPage)")
     }
     
     func search(for query: String) async throws {

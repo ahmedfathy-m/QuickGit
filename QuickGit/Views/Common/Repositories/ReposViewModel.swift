@@ -11,7 +11,7 @@ class RepositoriesViewModel: ViewModelProtocol {
     weak var delegate: ViewModelDelegate?
     
     fileprivate var currentPage = 1
-    fileprivate var currentQuery = "followers:>1000"
+    var currentQuery = "followers:>1000"
     fileprivate var chunkSize = 30
     
     fileprivate var reachedListEnd = false
@@ -82,6 +82,7 @@ class RepositoriesViewModel: ViewModelProtocol {
         
         if modelBefore == modelAfter {
             reachedListEnd = true
+            currentPage -= 1
         }
     }
     
@@ -104,8 +105,8 @@ class RepositoriesViewModel: ViewModelProtocol {
             reachedListEnd = cacheReachListEnd
             cachedModel = []
         }
-        if currentQuery != "repos:>35+followers:>1000" {
-            currentQuery = "repos:>35+followers:>1000"
+        if currentQuery != "followers:>1000" {
+            currentQuery = "followers:>1000"
         }
     }
     

@@ -63,6 +63,7 @@ class CommitViewModel: ViewModelProtocol {
         
         if modelBefore == modelAfter {
             reachedListEnd = true
+            currentPage -= 1
         }
     }
     
