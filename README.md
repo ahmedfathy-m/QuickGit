@@ -9,8 +9,8 @@ The app was written in Swift 5.6 using the MVVM pattern.
 <a href="https://imgur.com/WGorTzR"><img src="https://i.imgur.com/WGorTzRl.png" title="source: imgur.com" /></a>
 <a href="https://imgur.com/GzaJCm2"><img src="https://i.imgur.com/GzaJCm2l.png" title="source: imgur.com" /></a>
 <a href="https://imgur.com/Sfy3IUm"><img src="https://i.imgur.com/Sfy3IUml.png" title="source: imgur.com" /></a>
-<a href="https://imgur.com/pAdoWNf"><img src="https://i.imgur.com/pAdoWNf.png" title="source: imgur.com" /></a>
-<a href="https://imgur.com/fcJHEqW"><img src="https://i.imgur.com/fcJHEqW.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/fcJHEqW"><img src="https://i.imgur.com/fcJHEqWl.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/pAdoWNf"><img src="https://i.imgur.com/pAdoWNfl.png" title="source: imgur.com" /></a>
 
 ## Features
 - Explore Github Repositories and Users
